@@ -1,0 +1,1988 @@
+[
+  {
+    "name": "Vastitas Borealis",
+    "id": "6333",
+    "group": "low",
+    "fraction": 0.772
+  },
+  {
+    "name": "Phison",
+    "id": "4696",
+    "group": "mare",
+    "fraction": 0.2
+  },
+  {
+    "name": "New Bern",
+    "id": "4229",
+    "group": "crater",
+    "fraction": 0.672
+  },
+  {
+    "name": "Puyo",
+    "id": "14159",
+    "group": "crater",
+    "fraction": 1.0
+  },
+  {
+    "name": "Deucalionis Regio",
+    "id": "1506",
+    "group": "mare",
+    "fraction": 0.411
+  },
+  {
+    "name": "Tombe",
+    "id": "6055",
+    "group": "crater",
+    "fraction": 0.522
+  },
+  {
+    "name": "Yungay",
+    "id": "6681",
+    "group": "crater",
+    "fraction": 0.498
+  },
+  {
+    "name": "Crotone",
+    "id": "14153",
+    "group": "crater",
+    "fraction": 0.458
+  },
+  {
+    "name": "Ausonia",
+    "id": "479",
+    "group": "mare",
+    "fraction": 0.306
+  },
+  {
+    "name": "Amazonis",
+    "id": "218",
+    "group": "mare",
+    "fraction": 0.544
+  },
+  {
+    "name": "Tivoli",
+    "id": "14768",
+    "group": "crater",
+    "fraction": 0.247
+  },
+  {
+    "name": "Ausonia Montes",
+    "id": "482",
+    "group": "mons",
+    "fraction": 0.472
+  },
+  {
+    "name": "Charleston",
+    "id": "1152",
+    "group": "crater",
+    "fraction": 0.638
+  },
+  {
+    "name": "Nereidum Fretum",
+    "id": "4213",
+    "group": "mare",
+    "fraction": 0.3
+  },
+  {
+    "name": "Neith Regio",
+    "id": "4198",
+    "group": "mare",
+    "fraction": 0.4
+  },
+  {
+    "name": "Amenthes",
+    "id": "226",
+    "group": "mare",
+    "fraction": 0.44
+  },
+  {
+    "name": "Edom",
+    "id": "1725",
+    "group": "mare",
+    "fraction": 0.371
+  },
+  {
+    "name": "Alitus",
+    "id": "189",
+    "group": "crater",
+    "fraction": 0.253
+  },
+  {
+    "name": "Aeria",
+    "id": "68",
+    "group": "mare",
+    "fraction": 0.37
+  },
+  {
+    "name": "Gah",
+    "id": "2056",
+    "group": "crater",
+    "fraction": 0.653
+  },
+  {
+    "name": "Hsuanch eng",
+    "id": "2568",
+    "group": "crater",
+    "fraction": 0.618
+  },
+  {
+    "name": "Argyre",
+    "id": "369",
+    "group": "mare",
+    "fraction": 0.224
+  },
+  {
+    "name": "Aeolis",
+    "id": "65",
+    "group": "mare",
+    "fraction": 0.223
+  },
+  {
+    "name": "Arcadia",
+    "id": "346",
+    "group": "mare",
+    "fraction": 0.451
+  },
+  {
+    "name": "Claritas",
+    "id": "1229",
+    "group": "mare",
+    "fraction": 0.274
+  },
+  {
+    "name": "Coprates",
+    "id": "1300",
+    "group": "mare",
+    "fraction": 0.383
+  },
+  {
+    "name": "Baltia",
+    "id": "583",
+    "group": "mare",
+    "fraction": 0.226
+  },
+  {
+    "name": "Pebas",
+    "id": "14202",
+    "group": "crater",
+    "fraction": 0.581
+  },
+  {
+    "name": "Gehon",
+    "id": "2132",
+    "group": "mare",
+    "fraction": 0.274
+  },
+  {
+    "name": "Boreosyrtis",
+    "id": "825",
+    "group": "mare",
+    "fraction": 0.354
+  },
+  {
+    "name": "Cyclopia",
+    "id": "1362",
+    "group": "mare",
+    "fraction": 0.315
+  },
+  {
+    "name": "Cydonia",
+    "id": "1364",
+    "group": "mare",
+    "fraction": 0.411
+  },
+  {
+    "name": "Candor",
+    "id": "998",
+    "group": "mare",
+    "fraction": 0.275
+  },
+  {
+    "name": "Casius",
+    "id": "1041",
+    "group": "mare",
+    "fraction": 0.347
+  },
+  {
+    "name": "Deltoton Sinus",
+    "id": "1479",
+    "group": "mare",
+    "fraction": 0.216
+  },
+  {
+    "name": "Elysium",
+    "id": "1779",
+    "group": "mare",
+    "fraction": 0.565
+  },
+  {
+    "name": "Depressio Hellespontica",
+    "id": "1493",
+    "group": "mare",
+    "fraction": 0.352
+  },
+  {
+    "name": "Cebrenia",
+    "id": "1095",
+    "group": "mare",
+    "fraction": 0.424
+  },
+  {
+    "name": "Cecropia",
+    "id": "1096",
+    "group": "mare",
+    "fraction": 0.308
+  },
+  {
+    "name": "Chalce",
+    "id": "1122",
+    "group": "mare",
+    "fraction": 0.384
+  },
+  {
+    "name": "Chryse",
+    "id": "1202",
+    "group": "mare",
+    "fraction": 0.503
+  },
+  {
+    "name": "Pau",
+    "id": "14268",
+    "group": "crater",
+    "fraction": 0.377
+  },
+  {
+    "name": "Juventae Fons",
+    "id": "2876",
+    "group": "mare",
+    "fraction": 0.421
+  },
+  {
+    "name": "Dioscuria",
+    "id": "1544",
+    "group": "mare",
+    "fraction": 0.375
+  },
+  {
+    "name": "Jamuna",
+    "id": "2793",
+    "group": "mare",
+    "fraction": 0.271
+  },
+  {
+    "name": "Zhigou",
+    "id": "6730",
+    "group": "crater",
+    "fraction": 0.328
+  },
+  {
+    "name": "Hesperia",
+    "id": "2486",
+    "group": "mare",
+    "fraction": 0.292
+  },
+  {
+    "name": "Iapygia  Iapigia",
+    "id": "2630",
+    "group": "mare",
+    "fraction": 0.487
+  },
+  {
+    "name": "Omura",
+    "id": "6939",
+    "group": "crater",
+    "fraction": 0.664
+  },
+  {
+    "name": "Icaria",
+    "id": "2639",
+    "group": "mare",
+    "fraction": 0.317
+  },
+  {
+    "name": "Lemuria",
+    "id": "3344",
+    "group": "mare",
+    "fraction": 0.443
+  },
+  {
+    "name": "Udzha",
+    "id": "6961",
+    "group": "crater",
+    "fraction": 1.0
+  },
+  {
+    "name": "Laestrygon  Laestrigon",
+    "id": "3226",
+    "group": "mare",
+    "fraction": 0.459
+  },
+  {
+    "name": "Ada",
+    "id": "14182",
+    "group": "crater",
+    "fraction": 0.622
+  },
+  {
+    "name": "Mare Australe",
+    "id": "3666",
+    "group": "mare",
+    "fraction": 0.203
+  },
+  {
+    "name": "Mare Erythraeum",
+    "id": "3672",
+    "group": "mare",
+    "fraction": 0.234
+  },
+  {
+    "name": "Mare Serpentis",
+    "id": "3687",
+    "group": "mare",
+    "fraction": 0.363
+  },
+  {
+    "name": "Mare Sirenum",
+    "id": "3688",
+    "group": "mare",
+    "fraction": 0.408
+  },
+  {
+    "name": "Hashir",
+    "id": "14192",
+    "group": "crater",
+    "fraction": 0.327
+  },
+  {
+    "name": "Memnonia",
+    "id": "3826",
+    "group": "mare",
+    "fraction": 0.348
+  },
+  {
+    "name": "Urk",
+    "id": "6243",
+    "group": "crater",
+    "fraction": 0.617
+  },
+  {
+    "name": "Valga",
+    "id": "6283",
+    "group": "crater",
+    "fraction": 0.408
+  },
+  {
+    "name": "Nix Olympica",
+    "id": "4314",
+    "group": "mare",
+    "fraction": 0.479
+  },
+  {
+    "name": "Very",
+    "id": "6364",
+    "group": "crater",
+    "fraction": 0.27
+  },
+  {
+    "name": "Ogygis Regio",
+    "id": "4415",
+    "group": "mare",
+    "fraction": 0.261
+  },
+  {
+    "name": "Olympia",
+    "id": "4450",
+    "group": "mare",
+    "fraction": 0.211
+  },
+  {
+    "name": "Hadriaca Patera",
+    "id": "2310",
+    "group": "mons",
+    "fraction": 0.828
+  },
+  {
+    "name": "Ortygia",
+    "id": "4501",
+    "group": "mare",
+    "fraction": 0.453
+  },
+  {
+    "name": "Pandorae Fretum",
+    "id": "4574",
+    "group": "mare",
+    "fraction": 0.258
+  },
+  {
+    "name": "Vato",
+    "id": "6464",
+    "group": "crater",
+    "fraction": 0.34
+  },
+  {
+    "name": "Wallops",
+    "id": "6480",
+    "group": "crater",
+    "fraction": 0.572
+  },
+  {
+    "name": "Propontis",
+    "id": "4847",
+    "group": "mare",
+    "fraction": 0.416
+  },
+  {
+    "name": "Wallula",
+    "id": "6481",
+    "group": "crater",
+    "fraction": 0.264
+  },
+  {
+    "name": "Wer",
+    "id": "6521",
+    "group": "crater",
+    "fraction": 0.435
+  },
+  {
+    "name": "Wau",
+    "id": "6499",
+    "group": "crater",
+    "fraction": 0.452
+  },
+  {
+    "name": "Thoth",
+    "id": "5982",
+    "group": "mare",
+    "fraction": 0.351
+  },
+  {
+    "name": "Syria",
+    "id": "5793",
+    "group": "mare",
+    "fraction": 0.332
+  },
+  {
+    "name": "Syrtis Major",
+    "id": "5795",
+    "group": "mare",
+    "fraction": 0.211
+  },
+  {
+    "name": "Woomera",
+    "id": "6576",
+    "group": "crater",
+    "fraction": 0.706
+  },
+  {
+    "name": "Sinai",
+    "id": "5546",
+    "group": "mare",
+    "fraction": 0.457
+  },
+  {
+    "name": "Sithonius Lacus",
+    "id": "5585",
+    "group": "mare",
+    "fraction": 0.491
+  },
+  {
+    "name": "Solis Lacus",
+    "id": "5624",
+    "group": "mare",
+    "fraction": 0.324
+  },
+  {
+    "name": "Yala",
+    "id": "6628",
+    "group": "crater",
+    "fraction": 0.553
+  },
+  {
+    "name": "Uchronia",
+    "id": "6182",
+    "group": "mare",
+    "fraction": 0.458
+  },
+  {
+    "name": "Thymiamata",
+    "id": "5988",
+    "group": "mare",
+    "fraction": 0.254
+  },
+  {
+    "name": "Tecolote",
+    "id": "5894",
+    "group": "crater",
+    "fraction": 0.273
+  },
+  {
+    "name": "Trinacria",
+    "id": "6083",
+    "group": "mare",
+    "fraction": 0.241
+  },
+  {
+    "name": "Thira",
+    "id": "5973",
+    "group": "crater",
+    "fraction": 0.22
+  },
+  {
+    "name": "Utopia",
+    "id": "6259",
+    "group": "mare",
+    "fraction": 0.218
+  },
+  {
+    "name": "Yaonis Regio",
+    "id": "6639",
+    "group": "mare",
+    "fraction": 0.337
+  },
+  {
+    "name": "Vulcani Pelagus",
+    "id": "6456",
+    "group": "mare",
+    "fraction": 0.293
+  },
+  {
+    "name": "Timaru",
+    "id": "6009",
+    "group": "crater",
+    "fraction": 0.25
+  },
+  {
+    "name": "Timbuktu",
+    "id": "6010",
+    "group": "crater",
+    "fraction": 0.391
+  },
+  {
+    "name": "Xanthe",
+    "id": "6596",
+    "group": "mare",
+    "fraction": 0.32
+  },
+  {
+    "name": "Torbay",
+    "id": "6060",
+    "group": "crater",
+    "fraction": 0.58
+  },
+  {
+    "name": "Zephyria",
+    "id": "6719",
+    "group": "mare",
+    "fraction": 0.297
+  },
+  {
+    "name": "Tsau",
+    "id": "6101",
+    "group": "crater",
+    "fraction": 0.752
+  },
+  {
+    "name": "Albany",
+    "id": "160",
+    "group": "crater",
+    "fraction": 0.372
+  },
+  {
+    "name": "Bordeaux",
+    "id": "821",
+    "group": "crater",
+    "fraction": 0.471
+  },
+  {
+    "name": "Achar",
+    "id": "31",
+    "group": "crater",
+    "fraction": 0.521
+  },
+  {
+    "name": "Amsterdam",
+    "id": "246",
+    "group": "crater",
+    "fraction": 0.253
+  },
+  {
+    "name": "Aniak",
+    "id": "277",
+    "group": "crater",
+    "fraction": 0.226
+  },
+  {
+    "name": "Apt",
+    "id": "333",
+    "group": "crater",
+    "fraction": 0.213
+  },
+  {
+    "name": "Labeatis Mensa",
+    "id": "3192",
+    "group": "plat",
+    "fraction": 0.325
+  },
+  {
+    "name": "Arta",
+    "id": "397",
+    "group": "crater",
+    "fraction": 0.568
+  },
+  {
+    "name": "Bada",
+    "id": "546",
+    "group": "crater",
+    "fraction": 0.53
+  },
+  {
+    "name": "Bar",
+    "id": "600",
+    "group": "crater",
+    "fraction": 0.311
+  },
+  {
+    "name": "Baykonyr",
+    "id": "647",
+    "group": "crater",
+    "fraction": 0.488
+  },
+  {
+    "name": "Canaveral",
+    "id": "996",
+    "group": "crater",
+    "fraction": 0.22
+  },
+  {
+    "name": "Bhor",
+    "id": "730",
+    "group": "crater",
+    "fraction": 0.439
+  },
+  {
+    "name": "Bor",
+    "id": "819",
+    "group": "crater",
+    "fraction": 0.408
+  },
+  {
+    "name": "Turbi",
+    "id": "6138",
+    "group": "crater",
+    "fraction": 0.241
+  },
+  {
+    "name": "Camiri",
+    "id": "988",
+    "group": "crater",
+    "fraction": 0.531
+  },
+  {
+    "name": "Canberra",
+    "id": "997",
+    "group": "crater",
+    "fraction": 0.43
+  },
+  {
+    "name": "Castril",
+    "id": "1051",
+    "group": "crater",
+    "fraction": 0.538
+  },
+  {
+    "name": "Canas",
+    "id": "1094",
+    "group": "crater",
+    "fraction": 0.599
+  },
+  {
+    "name": "Chefu",
+    "id": "1169",
+    "group": "crater",
+    "fraction": 0.202
+  },
+  {
+    "name": "Chom",
+    "id": "1195",
+    "group": "crater",
+    "fraction": 0.212
+  },
+  {
+    "name": "Conches",
+    "id": "1283",
+    "group": "crater",
+    "fraction": 0.334
+  },
+  {
+    "name": "Crewe",
+    "id": "1332",
+    "group": "crater",
+    "fraction": 0.685
+  },
+  {
+    "name": "Cruz",
+    "id": "1342",
+    "group": "crater",
+    "fraction": 0.621
+  },
+  {
+    "name": "Da Vinci",
+    "id": "1377",
+    "group": "crater",
+    "fraction": 0.394
+  },
+  {
+    "name": "de Vaucouleurs",
+    "id": "1447",
+    "group": "crater",
+    "fraction": 0.35
+  },
+  {
+    "name": "Dese",
+    "id": "1499",
+    "group": "crater",
+    "fraction": 0.27
+  },
+  {
+    "name": "Douglass",
+    "id": "1631",
+    "group": "crater",
+    "fraction": 0.242
+  },
+  {
+    "name": "Downe",
+    "id": "1634",
+    "group": "crater",
+    "fraction": 0.367
+  },
+  {
+    "name": "Dubki",
+    "id": "1654",
+    "group": "crater",
+    "fraction": 0.261
+  },
+  {
+    "name": "Dush",
+    "id": "1675",
+    "group": "crater",
+    "fraction": 0.644
+  },
+  {
+    "name": "Faith",
+    "id": "1902",
+    "group": "crater",
+    "fraction": 0.336
+  },
+  {
+    "name": "Fastov",
+    "id": "1915",
+    "group": "crater",
+    "fraction": 0.29
+  },
+  {
+    "name": "Flat",
+    "id": "1976",
+    "group": "crater",
+    "fraction": 0.634
+  },
+  {
+    "name": "Flora",
+    "id": "1982",
+    "group": "crater",
+    "fraction": 0.415
+  },
+  {
+    "name": "Funchal",
+    "id": "2040",
+    "group": "crater",
+    "fraction": 0.563
+  },
+  {
+    "name": "Gaan",
+    "id": "2047",
+    "group": "crater",
+    "fraction": 0.44
+  },
+  {
+    "name": "Glazov",
+    "id": "2187",
+    "group": "crater",
+    "fraction": 0.298
+  },
+  {
+    "name": "Globe",
+    "id": "2191",
+    "group": "crater",
+    "fraction": 0.383
+  },
+  {
+    "name": "Grojec",
+    "id": "2264",
+    "group": "crater",
+    "fraction": 0.387
+  },
+  {
+    "name": "Gwash",
+    "id": "2294",
+    "group": "crater",
+    "fraction": 1.0
+  },
+  {
+    "name": "Houston",
+    "id": "2561",
+    "group": "crater",
+    "fraction": 0.315
+  },
+  {
+    "name": "Hit",
+    "id": "2621",
+    "group": "crater",
+    "fraction": 0.317
+  },
+  {
+    "name": "Jodrell",
+    "id": "2833",
+    "group": "crater",
+    "fraction": 0.559
+  },
+  {
+    "name": "Kakori",
+    "id": "2893",
+    "group": "crater",
+    "fraction": 0.219
+  },
+  {
+    "name": "Kanab",
+    "id": "2911",
+    "group": "crater",
+    "fraction": 0.237
+  },
+  {
+    "name": "Kartabo",
+    "id": "2938",
+    "group": "crater",
+    "fraction": 0.439
+  },
+  {
+    "name": "Keeler",
+    "id": "2977",
+    "group": "crater",
+    "fraction": 0.228
+  },
+  {
+    "name": "Kem",
+    "id": "2986",
+    "group": "crater",
+    "fraction": 0.394
+  },
+  {
+    "name": "Keul",
+    "id": "2995",
+    "group": "crater",
+    "fraction": 1.0
+  },
+  {
+    "name": "Kifri",
+    "id": "3027",
+    "group": "crater",
+    "fraction": 0.514
+  },
+  {
+    "name": "Kita",
+    "id": "3056",
+    "group": "crater",
+    "fraction": 0.221
+  },
+  {
+    "name": "Kourou",
+    "id": "3102",
+    "group": "crater",
+    "fraction": 0.565
+  },
+  {
+    "name": "Krishtofovich",
+    "id": "3122",
+    "group": "crater",
+    "fraction": 0.239
+  },
+  {
+    "name": "Lassell",
+    "id": "3287",
+    "group": "crater",
+    "fraction": 0.44
+  },
+  {
+    "name": "Lau",
+    "id": "3296",
+    "group": "crater",
+    "fraction": 0.249
+  },
+  {
+    "name": "Lemgo",
+    "id": "3341",
+    "group": "crater",
+    "fraction": 0.448
+  },
+  {
+    "name": "Lenya",
+    "id": "3349",
+    "group": "crater",
+    "fraction": 0.291
+  },
+  {
+    "name": "Lunae Planum",
+    "id": "3519",
+    "group": "plat",
+    "fraction": 0.284
+  },
+  {
+    "name": "Phlegra Montes",
+    "id": "4701",
+    "group": "mons",
+    "fraction": 0.344
+  },
+  {
+    "name": "Luga",
+    "id": "3509",
+    "group": "crater",
+    "fraction": 0.49
+  },
+  {
+    "name": "Madrid",
+    "id": "3567",
+    "group": "crater",
+    "fraction": 0.485
+  },
+  {
+    "name": "Mafra",
+    "id": "3573",
+    "group": "crater",
+    "fraction": 0.506
+  },
+  {
+    "name": "Maidstone",
+    "id": "3594",
+    "group": "crater",
+    "fraction": 0.305
+  },
+  {
+    "name": "Masursky",
+    "id": "3746",
+    "group": "crater",
+    "fraction": 0.331
+  },
+  {
+    "name": "Charitum Montes",
+    "id": "1149",
+    "group": "mons",
+    "fraction": 0.335
+  },
+  {
+    "name": "Tyrrhena Patera",
+    "id": "6174",
+    "group": "mons",
+    "fraction": 0.509
+  },
+  {
+    "name": "Mistretta",
+    "id": "3930",
+    "group": "crater",
+    "fraction": 0.566
+  },
+  {
+    "name": "Mitchel",
+    "id": "3931",
+    "group": "crater",
+    "fraction": 0.299
+  },
+  {
+    "name": "Tempe Terra",
+    "id": "5916",
+    "group": "plat",
+    "fraction": 0.38
+  },
+  {
+    "name": "Naju",
+    "id": "4116",
+    "group": "crater",
+    "fraction": 1.0
+  },
+  {
+    "name": "Nan",
+    "id": "4133",
+    "group": "crater",
+    "fraction": 0.324
+  },
+  {
+    "name": "Halex Fossae",
+    "id": "2323",
+    "group": "valley",
+    "fraction": 0.254
+  },
+  {
+    "name": "Jovis Tholus",
+    "id": "2850",
+    "group": "mons",
+    "fraction": 0.267
+  },
+  {
+    "name": "Nepa",
+    "id": "4205",
+    "group": "crater",
+    "fraction": 0.302
+  },
+  {
+    "name": "New Plymouth",
+    "id": "4231",
+    "group": "crater",
+    "fraction": 0.309
+  },
+  {
+    "name": "Horarum Mons",
+    "id": "2553",
+    "group": "mons",
+    "fraction": 0.247
+  },
+  {
+    "name": "Newport",
+    "id": "4234",
+    "group": "crater",
+    "fraction": 0.522
+  },
+  {
+    "name": "Nepenthes Planum",
+    "id": "14572",
+    "group": "plat",
+    "fraction": 0.463
+  },
+  {
+    "name": "Okhotsk",
+    "id": "4426",
+    "group": "crater",
+    "fraction": 0.647
+  },
+  {
+    "name": "Chryse Chaos",
+    "id": "14386",
+    "group": "low",
+    "fraction": 0.263
+  },
+  {
+    "name": "Oraibi",
+    "id": "4483",
+    "group": "crater",
+    "fraction": 0.384
+  },
+  {
+    "name": "Hyperborei Cavi",
+    "id": "2612",
+    "group": "low",
+    "fraction": 0.295
+  },
+  {
+    "name": "Palos",
+    "id": "4564",
+    "group": "crater",
+    "fraction": 0.231
+  },
+  {
+    "name": "Hyperborea Lingula",
+    "id": "14155",
+    "group": "plat",
+    "fraction": 0.249
+  },
+  {
+    "name": "Avernus Colles",
+    "id": "504",
+    "group": "mons",
+    "fraction": 0.235
+  },
+  {
+    "name": "Philadelphia",
+    "id": "4687",
+    "group": "crater",
+    "fraction": 0.573
+  },
+  {
+    "name": "Scandia Colles",
+    "id": "5356",
+    "group": "mons",
+    "fraction": 0.499
+  },
+  {
+    "name": "Podor",
+    "id": "4773",
+    "group": "crater",
+    "fraction": 0.298
+  },
+  {
+    "name": "Olympia Mensae",
+    "id": "14158",
+    "group": "plat",
+    "fraction": 0.253
+  },
+  {
+    "name": "Porvoo",
+    "id": "4807",
+    "group": "crater",
+    "fraction": 0.479
+  },
+  {
+    "name": "Princeton",
+    "id": "4824",
+    "group": "crater",
+    "fraction": 0.401
+  },
+  {
+    "name": "Hellespontus Montes",
+    "id": "2435",
+    "group": "mons",
+    "fraction": 0.479
+  },
+  {
+    "name": "Qiba",
+    "id": "4895",
+    "group": "crater",
+    "fraction": 0.429
+  },
+  {
+    "name": "Rimac",
+    "id": "5090",
+    "group": "crater",
+    "fraction": 1.0
+  },
+  {
+    "name": "Quorn",
+    "id": "4905",
+    "group": "crater",
+    "fraction": 0.311
+  },
+  {
+    "name": "Raub",
+    "id": "4955",
+    "group": "crater",
+    "fraction": 0.284
+  },
+  {
+    "name": "Oxia Chaos",
+    "id": "4533",
+    "group": "low",
+    "fraction": 0.501
+  },
+  {
+    "name": "Revda",
+    "id": "5008",
+    "group": "crater",
+    "fraction": 0.202
+  },
+  {
+    "name": "Reykholt",
+    "id": "5009",
+    "group": "crater",
+    "fraction": 0.441
+  },
+  {
+    "name": "Reynolds",
+    "id": "5010",
+    "group": "crater",
+    "fraction": 0.355
+  },
+  {
+    "name": "Acidalia Colles",
+    "id": "36",
+    "group": "mons",
+    "fraction": 0.39
+  },
+  {
+    "name": "Cydonia Colles",
+    "id": "1365",
+    "group": "mons",
+    "fraction": 0.347
+  },
+  {
+    "name": "Rynok",
+    "id": "5247",
+    "group": "crater",
+    "fraction": 0.814
+  },
+  {
+    "name": "Salaga",
+    "id": "5281",
+    "group": "crater",
+    "fraction": 0.36
+  },
+  {
+    "name": "Cydonia Mensae",
+    "id": "1367",
+    "group": "plat",
+    "fraction": 0.454
+  },
+  {
+    "name": "Nilokeras Mensae",
+    "id": "4276",
+    "group": "plat",
+    "fraction": 0.241
+  },
+  {
+    "name": "Ortygia Colles",
+    "id": "4502",
+    "group": "mons",
+    "fraction": 0.59
+  },
+  {
+    "name": "Sauk",
+    "id": "5339",
+    "group": "crater",
+    "fraction": 0.53
+  },
+  {
+    "name": "Nilosyrtis Mensae",
+    "id": "4279",
+    "group": "plat",
+    "fraction": 0.38
+  },
+  {
+    "name": "Alpheus Colles",
+    "id": "205",
+    "group": "mons",
+    "fraction": 0.422
+  },
+  {
+    "name": "Sebec",
+    "id": "5399",
+    "group": "crater",
+    "fraction": 0.355
+  },
+  {
+    "name": "Shambe",
+    "id": "5463",
+    "group": "crater",
+    "fraction": 0.251
+  },
+  {
+    "name": "Ismeniae Fossae",
+    "id": "2741",
+    "group": "valley",
+    "fraction": 0.239
+  },
+  {
+    "name": "Sigli",
+    "id": "5526",
+    "group": "crater",
+    "fraction": 0.261
+  },
+  {
+    "name": "Protonilus Mensae",
+    "id": "4852",
+    "group": "plat",
+    "fraction": 0.385
+  },
+  {
+    "name": "Astapus Colles",
+    "id": "436",
+    "group": "mons",
+    "fraction": 0.516
+  },
+  {
+    "name": "Slipher",
+    "id": "5600",
+    "group": "crater",
+    "fraction": 0.372
+  },
+  {
+    "name": "Libya Montes",
+    "id": "3391",
+    "group": "mons",
+    "fraction": 0.518
+  },
+  {
+    "name": "Sripur",
+    "id": "5677",
+    "group": "crater",
+    "fraction": 0.303
+  },
+  {
+    "name": "Stege",
+    "id": "5689",
+    "group": "crater",
+    "fraction": 0.375
+  },
+  {
+    "name": "Ston",
+    "id": "5714",
+    "group": "crater",
+    "fraction": 0.66
+  },
+  {
+    "name": "Surt",
+    "id": "5771",
+    "group": "crater",
+    "fraction": 0.3
+  },
+  {
+    "name": "Galaxias Chaos",
+    "id": "2065",
+    "group": "low",
+    "fraction": 0.607
+  },
+  {
+    "name": "Oenotria Plana",
+    "id": "14858",
+    "group": "plat",
+    "fraction": 0.349
+  },
+  {
+    "name": "Chryse Planitia",
+    "id": "1203",
+    "group": "low",
+    "fraction": 0.264
+  },
+  {
+    "name": "Syrtis Major Planum",
+    "id": "5796",
+    "group": "plat",
+    "fraction": 0.256
+  },
+  {
+    "name": "Arena Colles",
+    "id": "356",
+    "group": "mons",
+    "fraction": 0.336
+  },
+  {
+    "name": "McMurdo",
+    "id": "3784",
+    "group": "crater",
+    "fraction": 0.444
+  },
+  {
+    "name": "Hyperboreae Undae",
+    "id": "2611",
+    "group": "other",
+    "fraction": 0.279
+  },
+  {
+    "name": "Ascraeus Mensa",
+    "id": "416",
+    "group": "plat",
+    "fraction": 0.401
+  },
+  {
+    "name": "Echus Chaos",
+    "id": "1711",
+    "group": "low",
+    "fraction": 0.328
+  },
+  {
+    "name": "Nilus Chaos",
+    "id": "4281",
+    "group": "low",
+    "fraction": 0.46
+  },
+  {
+    "name": "Nilus Mensae",
+    "id": "4283",
+    "group": "plat",
+    "fraction": 0.345
+  },
+  {
+    "name": "Xanthe Montes",
+    "id": "6598",
+    "group": "mons",
+    "fraction": 0.487
+  },
+  {
+    "name": "Chryse Colles",
+    "id": "14152",
+    "group": "mons",
+    "fraction": 0.455
+  },
+  {
+    "name": "Elysium Planitia",
+    "id": "1784",
+    "group": "low",
+    "fraction": 0.568
+  },
+  {
+    "name": "Amenthes Cavi",
+    "id": "6960",
+    "group": "low",
+    "fraction": 0.614
+  },
+  {
+    "name": "Nepenthes Mensae",
+    "id": "4207",
+    "group": "plat",
+    "fraction": 0.44
+  },
+  {
+    "name": "Hibes Montes",
+    "id": "2496",
+    "group": "mons",
+    "fraction": 0.415
+  },
+  {
+    "name": "Syria Mons",
+    "id": "14573",
+    "group": "mons",
+    "fraction": 0.429
+  },
+  {
+    "name": "Daedalia Planum",
+    "id": "1380",
+    "group": "plat",
+    "fraction": 0.425
+  },
+  {
+    "name": "Aurorae Planum",
+    "id": "476",
+    "group": "plat",
+    "fraction": 0.232
+  },
+  {
+    "name": "Styx Dorsum",
+    "id": "5735",
+    "group": "other",
+    "fraction": 0.482
+  },
+  {
+    "name": "Capri Mensa",
+    "id": "1013",
+    "group": "plat",
+    "fraction": 0.276
+  },
+  {
+    "name": "Geryon Montes",
+    "id": "2151",
+    "group": "mons",
+    "fraction": 0.408
+  },
+  {
+    "name": "Ganges Chaos",
+    "id": "14169",
+    "group": "low",
+    "fraction": 0.249
+  },
+  {
+    "name": "Argyre Cavi",
+    "id": "370",
+    "group": "low",
+    "fraction": 0.261
+  },
+  {
+    "name": "Sinai Planum",
+    "id": "5548",
+    "group": "plat",
+    "fraction": 0.25
+  },
+  {
+    "name": "Margaritifer Terra",
+    "id": "3701",
+    "group": "plat",
+    "fraction": 0.346
+  },
+  {
+    "name": "Aeolis Mensae",
+    "id": "66",
+    "group": "plat",
+    "fraction": 0.311
+  },
+  {
+    "name": "Apollinaris Sulci",
+    "id": "324",
+    "group": "valley",
+    "fraction": 0.317
+  },
+  {
+    "name": "Avernus Cavi",
+    "id": "503",
+    "group": "low",
+    "fraction": 0.304
+  },
+  {
+    "name": "Aeolis Planum",
+    "id": "14165",
+    "group": "plat",
+    "fraction": 0.355
+  },
+  {
+    "name": "Chalce Montes",
+    "id": "1124",
+    "group": "mons",
+    "fraction": 0.383
+  },
+  {
+    "name": "Octantis Cavi",
+    "id": "4398",
+    "group": "low",
+    "fraction": 0.321
+  },
+  {
+    "name": "Hadriacus Mons",
+    "id": "14309",
+    "group": "mons",
+    "fraction": 0.376
+  },
+  {
+    "name": "Centauri Montes",
+    "id": "1100",
+    "group": "mons",
+    "fraction": 0.353
+  },
+  {
+    "name": "Argentea Planum",
+    "id": "364",
+    "group": "plat",
+    "fraction": 0.216
+  },
+  {
+    "name": "Australe Lingula",
+    "id": "484",
+    "group": "plat",
+    "fraction": 0.359
+  },
+  {
+    "name": "Promethei Planum",
+    "id": "4832",
+    "group": "plat",
+    "fraction": 0.275
+  },
+  {
+    "name": "Promethei Lingula",
+    "id": "4831",
+    "group": "plat",
+    "fraction": 0.229
+  },
+  {
+    "name": "Thyles Montes",
+    "id": "14179",
+    "group": "mons",
+    "fraction": 0.423
+  },
+  {
+    "name": "Cavi Angusti",
+    "id": "1088",
+    "group": "low",
+    "fraction": 0.257
+  },
+  {
+    "name": "Aonia Terra",
+    "id": "311",
+    "group": "plat",
+    "fraction": 0.246
+  },
+  {
+    "name": "Angustus Labyrinthus",
+    "id": "14177",
+    "group": "valley",
+    "fraction": 0.234
+  },
+  {
+    "name": "Terra Sirenum",
+    "id": "5932",
+    "group": "plat",
+    "fraction": 0.205
+  },
+  {
+    "name": "Coronae Montes",
+    "id": "1315",
+    "group": "mons",
+    "fraction": 0.344
+  },
+  {
+    "name": "Hellas Chaos",
+    "id": "2430",
+    "group": "low",
+    "fraction": 0.286
+  },
+  {
+    "name": "Lucus Planum",
+    "id": "3506",
+    "group": "plat",
+    "fraction": 0.23
+  },
+  {
+    "name": "Tartarus Colles",
+    "id": "5874",
+    "group": "mons",
+    "fraction": 0.389
+  },
+  {
+    "name": "Issedon Paterae",
+    "id": "2745",
+    "group": "mons",
+    "fraction": 0.433
+  },
+  {
+    "name": "Hadriacus Palus",
+    "id": "15151",
+    "group": "low",
+    "fraction": 0.348
+  },
+  {
+    "name": "Isara Valles",
+    "id": "2726",
+    "group": "valley",
+    "fraction": 0.374
+  },
+  {
+    "name": "Marte Vallis",
+    "id": "3723",
+    "group": "valley",
+    "fraction": 0.348
+  },
+  {
+    "name": "Nilokeras Scopulus",
+    "id": "4277",
+    "group": "other",
+    "fraction": 0.207
+  },
+  {
+    "name": "Phaenna Dorsum",
+    "id": "4681",
+    "group": "other",
+    "fraction": 0.358
+  },
+  {
+    "name": "Scandia",
+    "id": "5354",
+    "group": "mare",
+    "fraction": 0.421
+  },
+  {
+    "name": "Kangar",
+    "id": "16499",
+    "group": "crater",
+    "fraction": 0.433
+  },
+  {
+    "name": "Varkala",
+    "id": "16436",
+    "group": "crater",
+    "fraction": 0.461
+  },
+  {
+    "name": "Valiamala",
+    "id": "16435",
+    "group": "crater",
+    "fraction": 0.476
+  },
+  {
+    "name": "Krishnan Palus",
+    "id": "16439",
+    "group": "low",
+    "fraction": 0.375
+  },
+  {
+    "name": "Lal",
+    "id": "16288",
+    "group": "crater",
+    "fraction": 0.421
+  },
+  {
+    "name": "Xanthe Patera",
+    "id": "16291",
+    "group": "mons",
+    "fraction": 1.0
+  },
+  {
+    "name": "Blenheim",
+    "id": "16441",
+    "group": "crater",
+    "fraction": 0.423
+  },
+  {
+    "name": "Meridiani Planum",
+    "id": "3854",
+    "group": "plat",
+    "fraction": 0.276
+  },
+  {
+    "name": "Cayon",
+    "id": "15029",
+    "group": "crater",
+    "fraction": 0.483
+  },
+  {
+    "name": "Amazonis Planitia",
+    "id": "220",
+    "group": "low",
+    "fraction": 0.219
+  },
+  {
+    "name": "Moanda",
+    "id": "15015",
+    "group": "crater",
+    "fraction": 0.234
+  },
+  {
+    "name": "Lederberg",
+    "id": "15016",
+    "group": "crater",
+    "fraction": 0.357
+  },
+  {
+    "name": "Oxus Cavus",
+    "id": "15040",
+    "group": "low",
+    "fraction": 0.498
+  },
+  {
+    "name": "Aeolis Serpens",
+    "id": "15031",
+    "group": "other",
+    "fraction": 0.223
+  },
+  {
+    "name": "Candor Colles",
+    "id": "15034",
+    "group": "mons",
+    "fraction": 0.573
+  },
+  {
+    "name": "Oxus Patera",
+    "id": "15041",
+    "group": "mons",
+    "fraction": 0.527
+  },
+  {
+    "name": "Siloe Patera",
+    "id": "15042",
+    "group": "mons",
+    "fraction": 1.0
+  },
+  {
+    "name": "Eden Patera",
+    "id": "15037",
+    "group": "mons",
+    "fraction": 1.0
+  },
+  {
+    "name": "Magong",
+    "id": "15238",
+    "group": "crater",
+    "fraction": 0.203
+  },
+  {
+    "name": "Ceti Mensa",
+    "id": "1115",
+    "group": "plat",
+    "fraction": 0.323
+  },
+  {
+    "name": "Aram Dorsum",
+    "id": "15239",
+    "group": "other",
+    "fraction": 0.365
+  },
+  {
+    "name": "Hadriacus Cavi",
+    "id": "15264",
+    "group": "low",
+    "fraction": 0.311
+  },
+  {
+    "name": "Hydrae Chaos",
+    "id": "15271",
+    "group": "low",
+    "fraction": 0.237
+  },
+  {
+    "name": "Garni",
+    "id": "15318",
+    "group": "crater",
+    "fraction": 0.547
+  },
+  {
+    "name": "Rauna",
+    "id": "15319",
+    "group": "crater",
+    "fraction": 0.413
+  },
+  {
+    "name": "Coprates Montes",
+    "id": "15326",
+    "group": "mons",
+    "fraction": 0.361
+  },
+  {
+    "name": "Juventae Mensa",
+    "id": "15316",
+    "group": "plat",
+    "fraction": 0.308
+  },
+  {
+    "name": "Peneus Palus",
+    "id": "15365",
+    "group": "low",
+    "fraction": 0.498
+  },
+  {
+    "name": "Arvi",
+    "id": "16042",
+    "group": "crater",
+    "fraction": 0.226
+  },
+  {
+    "name": "Coronae Planum",
+    "id": "15366",
+    "group": "plat",
+    "fraction": 0.248
+  },
+  {
+    "name": "Icaria Rupes",
+    "id": "15575",
+    "group": "other",
+    "fraction": 0.264
+  },
+  {
+    "name": "Arcadia Planitia",
+    "id": "348",
+    "group": "low",
+    "fraction": 0.262
+  },
+  {
+    "name": "Gemina Lingula",
+    "id": "14287",
+    "group": "plat",
+    "fraction": 0.272
+  },
+  {
+    "name": "Olympia Planum",
+    "id": "14281",
+    "group": "plat",
+    "fraction": 0.38
+  },
+  {
+    "name": "Olympia Cavi",
+    "id": "14157",
+    "group": "low",
+    "fraction": 0.521
+  },
+  {
+    "name": "Jiji",
+    "id": "15767",
+    "group": "crater",
+    "fraction": 0.305
+  },
+  {
+    "name": "Oxia Planum",
+    "id": "15821",
+    "group": "plat",
+    "fraction": 0.302
+  },
+  {
+    "name": "Poso",
+    "id": "16043",
+    "group": "crater",
+    "fraction": 0.569
+  },
+  {
+    "name": "Luwuk",
+    "id": "16044",
+    "group": "crater",
+    "fraction": 0.816
+  },
+  {
+    "name": "Izola Mensa",
+    "id": "15897",
+    "group": "plat",
+    "fraction": 0.363
+  },
+  {
+    "name": "Simois Colles",
+    "id": "15184",
+    "group": "mons",
+    "fraction": 0.836
+  },
+  {
+    "name": "Hera Patera",
+    "id": "15691",
+    "group": "mons",
+    "fraction": 0.35
+  },
+  {
+    "name": "Thymiamata Serpens",
+    "id": "15793",
+    "group": "other",
+    "fraction": 0.226
+  },
+  {
+    "name": "Meridiani Serpentes",
+    "id": "15794",
+    "group": "other",
+    "fraction": 0.212
+  },
+  {
+    "name": "Eunostos",
+    "id": "1869",
+    "group": "mare",
+    "fraction": 0.537
+  },
+  {
+    "name": "Hermes Patera",
+    "id": "15690",
+    "group": "mons",
+    "fraction": 0.816
+  },
+  {
+    "name": "Longboh",
+    "id": "16010",
+    "group": "crater",
+    "fraction": 0.619
+  },
+  {
+    "name": "Wenjiashi Tholi",
+    "id": "16032",
+    "group": "mons",
+    "fraction": 0.209
+  },
+  {
+    "name": "Olympus Maculae",
+    "id": "15705",
+    "group": "mare",
+    "fraction": 0.382
+  },
+  {
+    "name": "Mastung",
+    "id": "16009",
+    "group": "crater",
+    "fraction": 0.539
+  },
+  {
+    "name": "Cantabras Serpens",
+    "id": "16000",
+    "group": "other",
+    "fraction": 0.305
+  },
+  {
+    "name": "Yaodian",
+    "id": "16018",
+    "group": "crater",
+    "fraction": 0.248
+  },
+  {
+    "name": "Avan",
+    "id": "15529",
+    "group": "crater",
+    "fraction": 0.254
+  },
+  {
+    "name": "Sibiti",
+    "id": "15535",
+    "group": "crater",
+    "fraction": 0.258
+  },
+  {
+    "name": "Mirissa",
+    "id": "16074",
+    "group": "crater",
+    "fraction": 0.202
+  },
+  {
+    "name": "Tangtse",
+    "id": "16107",
+    "group": "crater",
+    "fraction": 0.416
+  }
+]

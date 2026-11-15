@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mars Polygon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Tektur:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/polygon.css?v=web12-ba50289246">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+<body class="m-rover">
+
+<div class="boot" id="boot">
+  <div class="boot-box">
+    <h2>MARS<span>/</span>ПОЛИГОН</h2>
+    <div class="bar"><i id="boot-fill"></i></div>
+    <p id="boot-msg">Загрузка…</p>
+  </div>
+</div>
+
+<canvas id="scene"></canvas>
+<div class="fx"></div>
+
+<div class="hud">
+  <section class="brand">
+    <div class="kicker">ТЕСТОВЫЙ ПОЛИГОН · КРАТЕР ГЕЙЛ · g = 3.721 м/с²</div>
+    <h1>MARS<span>/</span>ПОЛИГОН</h1>
+    <a class="back" href="index.html">← К КАРТЕ МАРСА</a>
+    <p class="credits">МОДЕЛИ (SKETCHFAB, CC BY 4.0): <a href="https://sketchfab.com/3d-models/nasa-curiosity-mars-rover-a2c028b8479e4b2f87088eaa12baa093" target="_blank" rel="noopener">NASA CURIOSITY</a> — FIG FOGG · <a href="https://sketchfab.com/3d-models/past-glory-buggy-pubg-mobile-ba6d900b85e244f8ae485ba3be39502b" target="_blank" rel="noopener">BUGGY</a> — KENNY3D89 · <a href="https://sketchfab.com/3d-models/baby-cute-alien-1f7cbacd72334158bebba227396442d6" target="_blank" rel="noopener">BABY CUTE ALIEN</a> — KYYY_24 (ДОРАБОТАН: ОЧКИ, ЯЗЫК, МИМИКА)</p>
+    <div class="vsw">
+      <button class="vbtn cut on" data-vehicle="rover"><b>01</b>Curiosity</button>
+      <button class="vbtn cut" data-vehicle="buggy"><b>02</b>Багги</button>
+    </div>
+  </section>
+
+  <div class="timebar panel cut rover-only">
+    <div class="clock"><em>СОЛ</em><span id="t-sol">—</span>&nbsp;&nbsp;<em>LMST</em><span id="t-lmst">—</span></div>
+    <div class="warp" id="warp">
+      <button class="cut on" data-warp="1">×1</button>
+      <button class="cut" data-warp="10">×10</button>
+      <button class="cut" data-warp="50">×50</button>
+      <button class="cut" data-warp="100">×100</button>
+    </div>
+    <div class="warp-note" id="warp-note">скорость ровера <b>4 см/с</b> — как у настоящего</div>
+  </div>
+
+  <section class="tele panel cut rover-only" id="tele"></section>
+
+  <aside class="tools rover-only">
+    <div class="panel cut">
+      <div class="tabs">
+        <button class="tab cut on" data-tab="inst">Приборы</button>
+        <button class="tab cut" data-tab="cams">Камеры</button>
+        <button class="tab cut" data-tab="comm">Связь</button>
+      </div>
+      <div class="pane" data-pane="inst">
+        <div class="grid">
+          <button class="tb cut" data-tool="chemcam">ChemCam<small>ЛАЗЕР LIBS · ДО 7 М</small></button>
+          <button class="tb cut" data-tool="nav">AutoNav<small>ЕХАТЬ К ТОЧКЕ</small></button>
+          <button class="tb cut" data-tool="mahli">MAHLI<small>ЛУПА НА РУКЕ</small></button>
+          <button class="tb cut" data-tool="apxs">APXS<small>РЕНТГЕН-СОСТАВ</small></button>
+          <button class="tb cut" data-tool="drt">DRT<small>ЩЁТКА ОТ ПЫЛИ</small></button>
+          <button class="tb cut" data-tool="drill">Бур<small>ОБРАЗЕЦ ПОРОДЫ</small></button>
+          <button class="tb cut" data-act="sam" id="b-sam" disabled>SAM<small>ГАЗЫ · ОРГАНИКА</small></button>
+          <button class="tb cut" data-act="chemin" id="b-chemin" disabled>CheMin<small>МИНЕРАЛЫ (XRD)</small></button>
+          <button class="tb cut" data-act="dan">DAN<small>ВОДА ПОД ГРУНТОМ</small></button>
+          <button class="tb cut" data-act="pano">Панорама<small>MASTCAM 360°</small></button>
+          <button class="tb cut" data-act="selfie">Селфи<small>МОЗАИКА MAHLI</small></button>
+          <button class="tb cut" data-act="stow">Сложить руку<small>ПЕРЕД ЕЗДОЙ</small></button>
+        </div>
+        <p class="hint" id="inst-hint">Выберите прибор и кликните по камню или грунту. <b>Esc</b> — отмена/стоп.</p>
+      </div>
+      <div class="pane" data-pane="cams" hidden>
+        <div class="grid cams" id="cam-grid"></div>
+        <p class="hint">В камерах мачты мышь поворачивает саму мачту. <b>C</b> — следующая камера.</p>
+      </div>
+      <div class="pane" data-pane="comm" hidden>
+        <button class="toggle" id="delay-toggle"><i></i>Реальная задержка связи с Землёй</button>
+        <p class="hint">Команды идут через DSN со скоростью света. Ручное вождение тогда недоступно — только AutoNav и приборы, как у операторов JPL.</p>
+        <div class="tele" style="position:static;width:auto;max-height:none;margin-top:8px"><dl id="comm-dl"></dl></div>
+      </div>
+    </div>
+    <div class="panel cut">
+      <div class="ph"><span>Результаты <b>//</b> данные на Земле</span><span id="res-count">0</span></div>
+      <div class="results" id="results"><p class="empty">Пока пусто. Запустите прибор — данные появятся здесь.</p></div>
+    </div>
+  </aside>
+
+  <div class="log" id="log"></div>
+  <div class="progress panel cut" id="progress"><div id="prog-label"></div><div class="bar"><i id="prog-fill"></i></div></div>
+  <div class="toolhint panel cut" id="toolhint"></div>
+  <div class="camlabel panel cut" id="camlabel"></div>
+  <div class="reticle" id="reticle"></div>
+  <div class="pip" id="pip"><span></span></div>
+
+  <div class="speedo panel cut buggy-only">
+    <div class="big mono" id="b-speed">0<small>км/ч</small></div>
+    <div class="row"><span>РАКЕТА</span><div class="bar boost"><i id="b-boost"></i></div></div>
+    <div class="row"><span>ВОСТОРГ</span><div class="bar joy"><i id="b-joy"></i></div></div>
+  </div>
+
+  <div class="keys" id="keys"></div>
+</div>
+
+<div class="modal" id="modal">
+  <img id="modal-img" alt="">
+  <div class="row"><a class="btn cut" id="modal-dl" download="mars.jpg">Скачать</a><button class="btn cut" id="modal-close">Закрыть</button></div>
+</div>
+
+<script src="vendor/rover-libs-0.169.0.bundle.js?v=web12-b881cbe196"></script>
+<script src="assets/models/curiosity.glb.js?v=web12-dfcb1618d2"></script>
+<script src="assets/models/buggy.glb.js?v=web12-9cd26c44de"></script>
+<script src="assets/models/alien.glb.js?v=web12-8b19409803"></script>
+<script src="js/polygon/core.js?v=web12-eb02f0a505"></script>
+<script src="js/polygon/terrain.js?v=web12-0248994fcb"></script>
+<script src="js/polygon/physics.js?v=web12-cc021a0540"></script>
+<script src="js/polygon/tracks.js?v=web12-5fd79ebb1f"></script>
+<script src="js/polygon/sky.js?v=web12-3892a6c817"></script>
+<script src="js/polygon/science.js?v=web12-d514d29d5c"></script>
+<script src="js/polygon/rover.js?v=web12-cc40b17244"></script>
+<script src="js/polygon/buggy.js?v=web12-19af1b2cb0"></script>
+<script src="js/polygon/ops.js?v=web12-08d1b51d4a"></script>
+<script src="js/polygon/views.js?v=web12-0c09ac2892"></script>
+<script src="js/polygon/hud.js?v=web12-ae109147f4"></script>
+<script src="js/polygon/main.js?v=web12-b692e7c9fc"></script>
+</body>
+</html>

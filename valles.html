@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Valles Marineris expedition planner · Mars Map</title>
+    <link rel="stylesheet" href="css/valles.css?v=web12-112f82819a" />
+    <link rel="stylesheet" href="css/hazards.css?v=web12-5ecf91e3f0" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"
+        >MARS<span>/</span>MAP <small>EXPEDITION PLANNER</small></a
+      >
+      <nav class="section-nav" aria-label="Project sections">
+        <a href="index.html">Planet · 3D</a
+        ><a href="valles.html" aria-current="page"
+          >Valles Marineris · detailed</a
+        >
+      </nav>
+      <div class="top-actions">
+        <button id="hazards-open" class="quiet">Hazard scenarios</button
+        ><button id="sources-open" class="quiet">Data & model ↗</button>
+      </div>
+    </header>
+    <main class="workspace">
+      <aside class="setup">
+        <div class="section-title">MISSION BRIEF <span>01 / PLAN</span></div>
+        <h1>
+          Inside the<br />
+          great canyons.
+        </h1>
+        <p class="intro">
+          Explore Southwest Candor. Read the terrain. Adapt your route and
+          return with a reserve.
+        </p>
+        <label class="field-label" for="target">Science destination</label>
+        <select id="target"></select>
+        <p id="science-description" class="muted"></p>
+        <div class="control">
+          <label for="limit"
+            >EVA time budget <output id="limit-value"></output></label
+          ><input
+            id="limit"
+            type="range"
+            min="30"
+            max="480"
+            step="5"
+            value="180"
+          />
+        </div>
+        <div class="paired">
+          <label
+            >Science stop
+            <select id="science">
+              <option value="10">10 min</option>
+              <option value="20" selected>20 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+            </select></label
+          ><label
+            >Required reserve
+            <select id="reserve">
+              <option value="10">10 min</option>
+              <option value="20" selected>20 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+            </select></label
+          >
+        </div>
+        <section class="weather">
+          <div class="section-title">
+            WEATHER SCENARIO <span class="scenario-dot">SIMULATED</span>
+          </div>
+          <div class="presets" aria-label="Weather presets">
+            <button data-preset="clear">Clear</button
+            ><button data-preset="cold">Cold</button
+            ><button data-preset="dust">Dust</button>
+          </div>
+          <div class="control">
+            <label for="temperature"
+              >Air temperature <output id="temperature-value"></output></label
+            ><input
+              id="temperature"
+              type="range"
+              min="-120"
+              max="0"
+              step="1"
+              value="-35"
+            />
+          </div>
+          <div class="control">
+            <label for="wind"
+              >Wind speed <output id="wind-value"></output></label
+            ><input
+              id="wind"
+              type="range"
+              min="0"
+              max="40"
+              step="1"
+              value="5"
+            />
+          </div>
+          <div class="control">
+            <label for="visibility"
+              >Visibility <output id="visibility-value"></output></label
+            ><input
+              id="visibility"
+              type="range"
+              min="50"
+              max="3000"
+              step="50"
+              value="2000"
+            />
+          </div>
+          <div class="control">
+            <label for="direction"
+              >Wind from<output id="direction-value"></output></label
+            ><input
+              id="direction"
+              type="range"
+              min="0"
+              max="355"
+              step="5"
+              value="90"
+            />
+          </div>
+          <div class="control">
+            <label for="severity"
+              >Dust plume strength<output id="severity-value"></output></label
+            ><input
+              id="severity"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.65"
+            />
+          </div>
+          <div class="control">
+            <label for="stormX"
+              >Plume centre · west → east<output
+                id="stormX-value"
+              ></output></label
+            ><input
+              id="stormX"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.5"
+            />
+          </div>
+          <div class="control">
+            <label for="stormY"
+              >Plume centre · north → south<output
+                id="stormY-value"
+              ></output></label
+            ><input
+              id="stormY"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.5"
+            />
+          </div>
+          <div class="control">
+            <label for="stormRadius"
+              >Plume radius / patch<output
+                id="stormRadius-value"
+              ></output></label
+            ><input
+              id="stormRadius"
+              type="range"
+              min="0.06"
+              max="0.8"
+              step="0.02"
+              value="0.22"
+            />
+          </div>
+          <button id="random-weather" class="random">⤨ Generate weather</button>
+          <p class="micro" id="scenario-note">
+            A spatial scenario with terrain-dependent shelter. Change any value
+            to replan.
+          </p>
+        </section>
+        <details class="measurement">
+          <summary>Why these canyons?</summary>
+          <p>
+            Deep relief and layered deposits make Valles Marineris an
+            exploration candidate. Regional hydrogen detections motivate further
+            investigation. Water availability, stable ground and habitat
+            suitability are unverified at this patch.
+          </p>
+        </details>
+      </aside>
+      <section class="map-column">
+        <div class="map-heading">
+          <div>
+            <span class="eyebrow">VALLES MARINERIS / SOUTHWEST CANDOR</span>
+            <h2>Terrain changes the decision.</h2>
+          </div>
+          <span class="data-status" id="data-status">Loading terrain…</span>
+        </div>
+        <div class="map-shell" id="map-shell">
+          <div
+            id="terrain-3d"
+            aria-label="3D HiRISE terrain. Drag to orbit, scroll to zoom."
+          ></div>
+          <canvas
+            id="map"
+            tabindex="0"
+            aria-label="Interactive Valles Marineris map. Drag to pan, scroll or use plus and minus to zoom. Science destinations can also be selected in the mission panel."
+          ></canvas>
+          <div class="layers" aria-label="Map layers">
+            <button data-layer="surface" class="active">Surface</button
+            ><button data-layer="slope">Slope</button
+            ><button data-layer="science">Science</button
+            ><button data-layer="conditions">Conditions</button
+            ><button data-layer="hazards">Hazards</button>
+          </div>
+          <select
+            id="local-hazard-layer"
+            aria-label="Generated hazard layer"
+            hidden
+          >
+            <option value="hazards">All generated hazards</option>
+            <option value="sand">Loose sand / weak ground</option>
+            <option value="rocks">Sharp rocks / boulders</option>
+            <option value="rockfall">Unstable slopes / rockfall</option>
+            <option value="cold">Extreme cold</option>
+            <option value="solar">Solar particle event</option>
+          </select>
+          <div class="map-tools">
+            <button id="zoom-in" aria-label="Zoom in">+</button
+            ><button id="zoom-out" aria-label="Zoom out">−</button
+            ><button id="fit-map" aria-label="Fit map">⌖</button>
+          </div>
+          <div class="view-switch">
+            <button id="view-3d" class="active">3D terrain</button
+            ><button id="view-2d">2D survey</button
+            ><button id="focus-route">Approach route</button>
+          </div>
+          <div class="pick-tools">
+            <button id="pick-base">Place base</button
+            ><button id="pick-target">Pick destination</button
+            ><span id="pick-status"></span>
+          </div>
+          <div class="north">N<br />↑</div>
+          <div id="map-tooltip" class="map-tooltip" hidden></div>
+          <div class="map-legend" id="map-legend">
+            HiRISE optical mosaic · MRO / NASA / JPL / University of Arizona /
+            USGS
+          </div>
+          <div class="map-scale">
+            <span id="scale-bar"></span><b id="scale-label">200 m</b>
+          </div>
+          <div id="expedition" class="expedition" hidden>
+            <span id="expedition-stage"></span
+            ><strong id="expedition-progress"></strong
+            ><button id="stop-demo" aria-label="Stop walkthrough">×</button>
+          </div>
+        </div>
+        <div class="profile-panel">
+          <div class="profile-title">
+            <h3>Elevation along your traverse</h3>
+            <span id="profile-subtitle"></span>
+          </div>
+          <canvas
+            id="profile"
+            aria-label="Elevation profile for both outbound routes"
+          ></canvas>
+          <div class="profile-footer">
+            <span
+              ><i class="key direct"></i>Short route
+              <i class="key gentle"></i>Adaptive route</span
+            ><span>Same corridor used for the return</span>
+          </div>
+        </div>
+      </section>
+      <aside class="results">
+        <div class="section-title">ROUTE ASSESSMENT <span>LIVE</span></div>
+        <div id="recommendation" role="status" aria-live="polite"></div>
+        <p id="hazard-status" class="hazard-status"></p>
+        <div id="route-cards"></div>
+        <div id="fallback"></div>
+        <div class="timeline">
+          <h3>Round-trip time</h3>
+          <div id="time-bar"></div>
+          <div id="time-breakdown"></div>
+        </div>
+        <section class="scenario-compare">
+          <h3>Compare scenarios</h3>
+          <button id="save-scenario">Save current scenario</button>
+          <div id="comparison" aria-live="polite">
+            Save a baseline, change conditions or hazards, then compare.
+          </div>
+          <button id="restore-scenario" hidden>Restore saved scenario</button>
+        </section>
+        <button id="start-demo" class="primary">
+          Preview expedition <span>→</span></button
+        ><button id="export-plan" class="quiet export">
+          ↓ Export mission plan
+        </button>
+        <p class="micro limits">
+          Planning prototype. Time and risk are modeled. Surface rocks, soil
+          strength and suit performance require field verification.
+        </p>
+      </aside>
+    </main>
+    <dialog id="sources">
+      <div class="dialog-head">
+        <h2>Evidence & assumptions</h2>
+        <button id="sources-close" aria-label="Close data and model">×</button>
+      </div>
+      <div id="sources-content"></div>
+    </dialog>
+    <script src="vendor/three-0.169.0.bundle.js?v=web12-5ba6d36e59"></script>
+    <script src="assets/valles/terrain.js?v=web12-5e260c8674"></script>
+    <script src="assets/valles/surface-data.js?v=web12-507841f169"></script>
+    <script src="js/hazards.js?v=web12-e8b4861dbf"></script>
+    <script src="js/hazard-controls.js?v=web12-dd7aa03b8c"></script>
+    <script src="js/weather.js?v=web12-8291b218c6"></script>
+    <script src="js/valles-model.js?v=web12-e2451f0275"></script>
+    <script src="js/valles-3d.js?v=web12-9cd4086c62"></script>
+    <script src="js/valles.js?v=web12-b9a6101642"></script>
+  </body>
+</html>

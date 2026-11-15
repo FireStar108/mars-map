@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marswalk Scout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Tektur:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mission.css?v=web12-d61753a9b1">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+<body class="phase-brief">
+
+<canvas id="scene"></canvas>
+<div class="fx"></div>
+
+<!-- loading -->
+<div class="boot" id="boot">
+  <div class="boot-box">
+    <div class="kicker" id="boot-zone">Gale crater</div>
+    <h2>MARS<span>/</span>MAP</h2>
+    <div class="bar"><i id="boot-fill"></i></div>
+    <p id="boot-msg">Loading…</p>
+  </div>
+</div>
+
+<!-- driving HUD -->
+<div class="hud drive-hud">
+  <section class="top-left">
+    <a class="back" href="index.html">← Globe</a>
+    <div class="kicker" id="h-zone"></div>
+    <div class="cps" id="cps"></div>
+  </section>
+
+  <section class="clock panel cut">
+    <div><span>SOL</span><b id="t-sol">—</b></div>
+    <div><span>LMST</span><b id="t-lmst">—</b></div>
+    <div class="warp" id="warp"></div>
+  </section>
+
+  <section class="sensors panel cut" id="sensors"></section>
+
+  <section class="nav-box" id="navbox">
+    <div class="nb-label" id="nb-label">Next beacon</div>
+    <div class="nb-dist" id="nb-dist">—</div>
+    <div class="nb-arrow" id="nb-arrow" aria-hidden="true">↑</div>
+  </section>
+
+  <section class="mini panel cut"><canvas id="minimap" width="600" height="600"></canvas><div class="mini-n">N ↑ · HiRISE terrain</div></section>
+
+  <button class="end cut" id="end-scout" disabled>Complete scout route →</button>
+  <div class="rating-now" id="rating-now"></div>
+</div>
+
+<!-- checkpoint science stop -->
+<section class="stop panel cut" id="stop">
+  <div class="kicker" id="st-kick"></div>
+  <h3 id="st-name"></h3>
+  <p id="st-text"></p>
+  <dl id="st-dl"></dl>
+  <button id="st-close" class="go">Continue survey →</button>
+</section>
+
+<!-- report + route editor -->
+<section class="report" id="report">
+  <div class="r-map">
+    <canvas id="r-canvas"></canvas>
+    <div class="r-tip" id="r-tip"></div>
+    <div class="r-legend">
+      <span><i style="background:#7dff8a"></i>Excellent</span>
+      <span><i style="background:#ffc94f"></i>So-so</span>
+      <span><i style="background:#ff4f5e"></i>Poor</span>
+      <span><i class="dash"></i>Rover track</span>
+    </div>
+    <label class="r-layers" for="r-layer">Route layer
+      <select id="r-layer">
+        <option value="rating">Suit mobility</option>
+        <option value="slope">Terrain slope</option>
+        <option value="groundT">Modeled ground temperature</option>
+        <option value="dose">Modeled radiation</option>
+      </select>
+      <span id="r-layer-range"></span>
+    </label>
+  </div>
+  <aside class="r-side panel cut">
+    <div class="kicker">Phase 2 of 3 · Scouting report</div>
+    <h2 id="r-title">Route report</h2>
+    <div class="r-stats" id="r-stats"></div>
+    <div class="r-bar" id="r-bar"></div>
+    <div class="r-help">Drag the white handle to shape the route. The planner uses the HiRISE terrain to rate slope and rough ground.</div>
+    <div class="r-segs" id="r-segs"></div>
+    <div class="r-actions">
+      <button class="sec cut" id="r-auto">Plan safer route</button>
+      <button class="sec cut" id="r-redrive">Back to rover</button>
+      <button class="go cut" id="r-walk">Walk this route <b>→</b></button>
+    </div>
+  </aside>
+</section>
+
+<!-- helmet HUD for the walk -->
+<div class="visor" id="visor">
+  <div class="v-glass"></div>
+  <div class="v-compass"><div class="v-tape" id="v-tape"></div><i></i></div>
+  <section class="v-left" id="v-suit"></section>
+  <section class="v-right" id="v-envr"></section>
+  <section class="v-center">
+    <div class="v-wp" id="v-wp"></div>
+    <div class="v-seg" id="v-seg"></div>
+    <div class="v-actions">
+      <button class="sec cut" id="v-photo" disabled>Take photo</button>
+      <button class="sec cut" id="v-sample" disabled>Collect sample</button>
+    </div>
+  </section>
+  <div class="v-alert" id="v-alert"></div>
+  <div class="v-keys"><kbd>W</kbd><kbd>S</kbd> walk · <kbd>A</kbd><kbd>D</kbd> strafe · mouse: look (click to lock) · <kbd>F</kbd> follow route · <kbd>E</kbd> interact · <kbd>T</kbd> time ×</div>
+</div>
+
+<!-- mission complete -->
+<section class="done" id="done">
+  <div class="panel cut">
+    <div class="kicker">Phase 3 of 3 · Marswalk complete</div>
+    <h2>Mission complete</h2>
+    <div class="r-stats" id="d-stats"></div>
+    <p id="d-text"></p>
+    <a id="d-photo" class="sec cut" download="marswalk-photo.png">Download field photo</a>
+    <div class="r-actions">
+      <a class="sec cut" href="index.html">Back to globe</a>
+      <button class="go cut" id="d-again">Scout another route <b>→</b></button>
+    </div>
+  </div>
+</section>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="vendor/rover-libs-0.169.0.bundle.js?v=web12-b881cbe196"></script>
+<script src="assets/models/curiosity.glb.js?v=web12-dfcb1618d2"></script>
+<script src="js/zones.js?v=web12-a79e18c30b"></script>
+<script src="js/polygon/core.js?v=web12-eb02f0a505"></script>
+<script src="js/polygon/terrain.js?v=web12-0248994fcb"></script>
+<script src="js/polygon/physics.js?v=web12-cc021a0540"></script>
+<script src="js/polygon/tracks.js?v=web12-5fd79ebb1f"></script>
+<script src="js/polygon/sky.js?v=web12-3892a6c817"></script>
+<script src="js/polygon/science.js?v=web12-d514d29d5c"></script>
+<script src="js/polygon/rover.js?v=web12-cc40b17244"></script>
+<script src="js/polygon/views.js?v=web12-0c09ac2892"></script>
+<script src="js/mission/zone-terrain.js?v=web12-fb99c9234e"></script>
+<script src="js/mission/env.js?v=web12-1b14063231"></script>
+<script src="js/mission/habitat.js?v=web12-32078191f7"></script>
+<script src="js/mission/route.js?v=web12-4193970f2d"></script>
+<script src="js/mission/walk.js?v=web12-76a17072af"></script>
+<script src="js/mission/game.js?v=web12-f3a5ff53db"></script>
+</body>
+</html>

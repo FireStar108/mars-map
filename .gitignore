@@ -1,0 +1,15 @@
+.DS_Store
+dist/
+outputs/
+.sites-runtime/
+.sites-checkout*/
+node_modules/
+__pycache__/
+*.pyc
+*.log
+.env
+.env.*
+!.env.example
+tests/*.png
+# Local file:// transport copies; reconstruct from the tracked WebP tiles.
+assets/global/hrsc/[0-6]/*.js

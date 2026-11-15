@@ -1,0 +1,9 @@
+{
+  "2071": {
+    "file": "Curiosity_Cradled_by_Gale_Crater.jpg",
+    "license": "JPL image use · attribution required",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Curiosity_Cradled_by_Gale_Crater.jpg#Licensing",
+    "checked": "2026-11-15",
+    "reason": "Lead image in Gale (crater). Its custom JPL attribution license is documented on the Commons file page but missing from the API LicenseShortName field. Preserve the complete NASA/JPL-Caltech/ESA/DLR/FU Berlin/MSSS credit."
+  }
+}

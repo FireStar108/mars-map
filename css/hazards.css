@@ -1,0 +1,239 @@
+.hazard-dialog {
+  color: #edf1e5;
+  background: #182018;
+  border: 1px solid #65775e;
+  border-radius: 12px;
+  width: min(650px, calc(100vw - 24px));
+  max-height: 90dvh;
+  padding: 24px;
+  box-sizing: border-box;
+  font:
+    13px/1.5 system-ui,
+    sans-serif;
+  overflow-y: auto;
+}
+.hazard-dialog::backdrop {
+  background: #090e0be0;
+}
+.hazard-dialog header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+}
+.hazard-dialog h2 {
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 6px 0 16px;
+}
+.hazard-dialog header small {
+  letter-spacing: 0.1em;
+  color: #c4d3af;
+  font-size: 10px;
+}
+.hazard-dialog p {
+  margin: 10px 0;
+  color: #bdc7b4;
+}
+.hazard-dialog button,
+.hazard-dialog select,
+.hazard-dialog input[type="number"] {
+  border: 1px solid #66745e;
+  border-radius: 4px;
+  background: #273324;
+  color: #edf1e5;
+  font: inherit;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.hazard-dialog input[type="range"],
+.hazard-dialog input[type="checkbox"] {
+  accent-color: #c8dfb0;
+}
+.hazard-enabled {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+.hazard-seed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0;
+  border-block: 1px solid #394534;
+}
+.hazard-seed input {
+  width: 125px;
+}
+.hazard-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  padding: 22px 0;
+}
+.hazard-controls label > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.hazard-controls i {
+  display: block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.hazard-controls output {
+  margin-left: auto;
+  white-space: nowrap;
+  color: #d5eac1;
+  font-size: 11px;
+}
+.hazard-controls input {
+  display: block;
+  width: 100%;
+  margin: 12px 0 5px;
+}
+.hazard-controls small {
+  font-size: 10px;
+  color: #aab6a1;
+}
+.hazard-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid #394534;
+}
+.hazard-focus label {
+  width: 100%;
+  font-size: 12px;
+}
+.hazard-focus select {
+  width: auto;
+  max-width: 100%;
+}
+.hazard-rule {
+  font-size: 11px;
+}
+.hazard-dialog details {
+  font-size: 12px;
+  border-top: 1px solid #394534;
+  padding-top: 12px;
+}
+.hazard-dialog summary {
+  cursor: pointer;
+  color: #cde4b5;
+}
+.hazard-dialog a {
+  color: #cde4b5;
+}
+.hazard-dialog footer {
+  position: sticky;
+  bottom: -24px;
+  padding: 16px 0;
+  background: #182018;
+  margin-top: 12px;
+}
+.hazard-dialog #hazard-apply {
+  width: 100%;
+  background: #c6dfac;
+  color: #192518;
+  font-weight: 700;
+}
+.hazard-status {
+  font-size: 10px;
+  line-height: 1.5;
+  padding: 8px 0;
+  color: #c8d0bb;
+}
+.hazard-status strong {
+  color: #ffb18f;
+}
+#local-hazard-layer {
+  position: absolute;
+  z-index: 3;
+  right: 64px;
+  top: 110px;
+  width: 180px;
+  padding: 7px;
+  font-size: 10px;
+  background: #192119ed;
+}
+.top-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .hazard-dialog {
+    padding: 16px;
+  }
+  .hazard-controls {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .hazard-dialog h2 {
+    font-size: 22px;
+  }
+  .hazard-dialog footer {
+    bottom: -16px;
+  }
+  .jezero-entry {
+    top: 148px;
+  }
+  .global-layers button {
+    padding: 6px 7px;
+  }
+  #local-hazard-layer {
+    right: 58px;
+    top: 100px;
+    width: 165px;
+  }
+  .top-actions {
+    flex-wrap: wrap;
+  }
+  .hazard-focus button {
+    font-size: 11px;
+  }
+}
+.global-route-card .hazard-status strong {
+  font: 11px/1.5 var(--f-mono);
+  display: inline;
+}
+.global-layers button {
+  white-space: nowrap;
+}
+.hazard-key-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  margin-top: 4px;
+}
+.hazard-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font:
+    9px/1.4 system-ui,
+    sans-serif;
+}
+.hazard-key i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+@media (max-width: 700px) {
+  .hazard-key-row {
+    gap: 3px 7px;
+  }
+  .hazard-key {
+    font-size: 8px;
+  }
+}

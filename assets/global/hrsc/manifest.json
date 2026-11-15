@@ -1,0 +1,19 @@
+{
+  "sourceFile": "Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif",
+  "sourceBytes": 11384463908,
+  "sourceWidth": 106694,
+  "sourceHeight": 53347,
+  "sourcePixelMetres": 200,
+  "tilePixelMetres": 200.37,
+  "tileSize": 832,
+  "maxLevel": 6,
+  "format": "DEM-derived shaded relief, not imagery",
+  "source": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif",
+  "credit": "USGS Astrogeology / Fergason, Hare & Laura (2018) / ESA/DLR/FU Berlin HRSC / NASA MOLA",
+  "license": "HRSC-derived relief: CC BY-SA 3.0 IGO; MOLA: NASA public data",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/",
+  "webFormat": "webp",
+  "webTileCount": 10922,
+  "webTileBytes": 366794222,
+  "webEncoding": "WebP quality 85, identical pixel dimensions; original DEM and terrain statistics unchanged"
+}

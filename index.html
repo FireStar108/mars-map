@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mars Map · Planet & Valles Marineris</title>
+    <link rel="stylesheet" href="css/globe.css?v=web12-8b670631a9" />
+    <link rel="stylesheet" href="css/hazards.css?v=web12-5ecf91e3f0" />
+    <link
+      rel="stylesheet"
+      href="css/region-capture.css?v=web12-13a5aa30c7"
+    />
+    <link
+      rel="stylesheet"
+      href="css/region-wikipedia.css?v=web12-e30440d64a"
+    />
+    <link rel="stylesheet" href="css/region-risk.css?v=web12-f45bbb1dcd" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+    <div id="labels"></div>
+    <div class="fx"></div>
+
+    <header class="brand rv">
+      <div class="kicker">Interplanetary survival guide</div>
+      <h1>MARS<span>/</span>MAP</h1>
+    </header>
+    <nav class="project-nav" aria-label="Project sections">
+      <a href="index.html" aria-current="page">Planet · 3D</a
+      ><a href="valles.html">Valles · detailed</a>
+    </nav>
+    <div class="global-layers" aria-label="Planet layers">
+      <select id="planet-layer" aria-label="Planet layer">
+        <option value="surface">HRSC relief · 200 m source</option>
+        <option value="photo">Colour surface · overview</option>
+        <option value="elevation">MOLA elevation</option>
+        <option value="scenario">Weather scenario · simulated</option>
+        <option value="dust">Historical dust storms</option>
+        <option value="radiation">Radiation · shielding proxy</option>
+        <optgroup label="Generated hazard scenarios">
+          <option value="hazards">All hazards · scenario</option>
+          <option value="sand">Loose sand · scenario</option>
+          <option value="rocks">Sharp rocks · scenario</option>
+          <option value="rockfall">Unstable slopes · scenario</option>
+          <option value="cold">Extreme cold · scenario</option>
+          <option value="solar">Solar particle event · scenario</option>
+        </optgroup>
+      </select>
+      <select id="planet-season" aria-label="Martian season">
+        <option value="45">Ls 0–90° · N spring</option>
+        <option value="135">Ls 90–180° · N summer</option>
+        <option value="225" selected>Ls 180–270° · N autumn</option>
+        <option value="315">Ls 270–360° · N winter</option>
+      </select>
+      <button id="weather-open">Weather scenario</button>
+      <button id="hazards-open">Hazard scenarios</button>
+      <button id="global-data-open">Data & model</button>
+    </div>
+    <div class="globe-zoom">
+      <button
+        id="globe-zoom-in"
+        aria-label="Zoom in"
+        title="Maximum zoom: 500 km altitude"
+      >
+        +</button
+      ><button id="globe-zoom-out" aria-label="Zoom out">−</button
+      ><button id="globe-home">Globe</button>
+    </div>
+    <div id="global-legend" role="status"></div>
+    <div id="global-probe" hidden></div>
+    <div id="map-name-count"></div>
+    <button id="toggle-global-panels" aria-pressed="false">Hide panels</button>
+
+    <div class="hint rv" id="hint">
+      Drag to rotate · Zoom for smaller names · Click a landform
+    </div>
+
+    <aside
+      id="region-browser-shell"
+      class="region-browser"
+      aria-label="Explore Mars"
+    >
+      <div class="map-mode" aria-label="Globe layers">
+        <button id="mode-regions" aria-pressed="true">Names</button>
+        <button id="mode-missions" aria-pressed="false">Missions</button>
+        <button id="mode-routes" aria-pressed="false">Routes</button>
+      </div>
+      <div id="region-controls">
+        <strong id="region-total">FULL IAU CATALOGUE</strong>
+        <label for="region-search">Find any named feature</label>
+        <input
+          id="region-search"
+          type="search"
+          placeholder="Jezero, Olympus, Valles…"
+          autocomplete="off"
+        />
+        <p id="label-scale-status" class="label-scale-status"></p>
+        <details class="filter-details" open>
+          <summary>Feature groups <span>7 categories</span></summary>
+          <div id="region-filters"></div>
+        </details>
+        <p id="region-count"></p>
+        <div id="region-list"></div>
+        <p id="region-page" class="region-scroll-note"></p>
+        <p class="region-map-note">
+          Zoom in for smaller names. Click a name or landform to approach and
+          frame it. One white boundary is revealed at a time.
+        </p>
+      </div>
+      <div id="mission-controls" hidden>
+        <label for="mission-select">Approach an expedition</label
+        ><select id="mission-select">
+          <option value="">Choose a mission…</option>
+        </select>
+      </div>
+      <div id="global-route-controls" hidden>
+        <h2>Across Mars</h2>
+        <p class="global-small">Regional planning on the 3D surface.</p>
+        <label for="route-from">Departure</label
+        ><select id="route-from"></select
+        ><button class="pick-point" id="pick-from">
+          ⌖ Pick departure on globe
+        </button>
+        <label for="route-to">Destination</label
+        ><select id="route-to"></select
+        ><button class="pick-point" id="pick-to">
+          ⌖ Pick destination on globe
+        </button>
+        <p id="route-pick-status" role="status"></p>
+        <label for="dust-weight"
+          >Avoid observed dust activity
+          <output id="dust-weight-value">2</output></label
+        ><input
+          type="range"
+          id="dust-weight"
+          min="0"
+          max="5"
+          step=".5"
+          value="2"
+        />
+        <label for="radiation-weight"
+          >Prefer atmospheric shielding
+          <output id="radiation-weight-value">2</output></label
+        ><input
+          type="range"
+          id="radiation-weight"
+          min="0"
+          max="5"
+          step=".5"
+          value="2"
+        />
+        <div class="route-driving">
+          <label
+            >Vehicle km/h<input
+              id="travel-speed"
+              type="number"
+              min="1"
+              max="80"
+              value="10" /></label
+          ><label
+            >Driving h/sol<input
+              id="travel-hours"
+              type="number"
+              min="1"
+              max="20"
+              value="6"
+          /></label>
+        </div>
+        <button id="plan-global" class="go cut">Compare routes →</button
+        ><button id="clear-global" class="pick-point">Clear route</button>
+        <p class="global-small">
+          1° route grid ≈59 km at the equator. Time is a vehicle scenario. Local
+          obstacles and logistics need detailed surveys.
+        </p>
+      </div>
+    </aside>
+
+    <section id="global-report" hidden aria-live="polite">
+      <h2>Traverse comparison</h2>
+      <p id="global-summary"></p>
+      <div id="global-route-cards"></div>
+      <canvas
+        id="global-profile"
+        aria-label="Global route elevation profile"
+      ></canvas>
+      <p class="global-small">
+        MOLA profile · elevation in km · globe relief exaggerated ×3
+      </p>
+      <button id="save-global-scenario" class="pick-point">
+        Save scenario for comparison
+      </button>
+      <div id="global-comparison" class="global-small" aria-live="polite"></div>
+      <button id="follow-global" class="go cut">Follow selected route →</button
+      ><button id="export-global" class="pick-point">Export route</button>
+      <p id="global-follow-status" role="status"></p>
+    </section>
+
+    <dialog id="global-data">
+      <button id="global-data-close" aria-label="Close source information">
+        ✕
+      </button>
+      <h2>Global map · evidence & models</h2>
+      <div id="global-data-content"></div>
+    </dialog>
+
+    <section class="region-card" id="region-card" aria-live="polite" hidden>
+      <button id="region-close" aria-label="Close region details">✕</button>
+      <div class="kicker" id="region-type"></div>
+      <h2 id="region-name"></h2>
+      <p id="region-coordinates"></p>
+      <div class="region-tabs" role="tablist" aria-label="Object information">
+        <button
+          id="region-tab-risk"
+          role="tab"
+          aria-selected="true"
+          aria-controls="region-panel-risk"
+        >
+          01 · Terrain & hazards
+        </button>
+        <button
+          id="region-tab-wiki"
+          role="tab"
+          aria-selected="false"
+          aria-controls="region-panel-wiki"
+          tabindex="-1"
+        >
+          02 · Wikipedia & photo
+        </button>
+      </div>
+      <div
+        id="region-panel-risk"
+        role="tabpanel"
+        aria-labelledby="region-tab-risk"
+      >
+        <div id="region-risk" aria-live="polite"></div>
+        <p id="region-contents"></p>
+        <details class="region-evidence">
+          <summary>Terrain, boundary & evidence</summary>
+          <dl id="region-stats"></dl>
+          <p id="region-quality"></p>
+          <p id="region-boundary"></p>
+          <a id="region-source" target="_blank" rel="noopener"
+            >IAU / USGS catalogue ↗</a
+          >
+          <p id="region-environment" class="global-small"></p>
+        </details>
+        <div id="region-coverage"></div>
+        <a id="region-open" class="go cut" href="valles.html" hidden
+          >Open detailed map →</a
+        >
+      </div>
+      <div
+        id="region-panel-wiki"
+        role="tabpanel"
+        aria-labelledby="region-tab-wiki"
+        hidden
+      >
+        <div id="region-wikipedia"></div>
+        <p id="region-description"></p>
+        <div id="region-text-source"></div>
+        <p id="region-origin"></p>
+      </div>
+    </section>
+
+    <!-- Mission details stay fixed while the planet remains at its overview scale. -->
+    <section class="card cut" id="card" aria-live="polite">
+      <button class="x" id="card-x" aria-label="Close">✕</button>
+      <a class="c-photo" id="c-photo-link" target="_blank" rel="noopener">
+        <img id="c-photo" alt="" loading="lazy" />
+        <span id="c-credit"></span>
+      </a>
+      <div class="c-kick" id="c-kick"></div>
+      <h2 id="c-name"></h2>
+      <div class="c-site" id="c-site"></div>
+      <div class="c-lbl">What</div>
+      <p id="c-what"></p>
+      <div class="c-lbl">Why</div>
+      <p id="c-why"></p>
+      <div class="c-status" id="c-status"></div>
+      <div class="c-note" id="c-note"></div>
+      <p id="mission-environment" class="global-small"></p>
+    </section>
+
+    <button class="jezero-entry cut" id="find-valles">
+      Explore Valles <b>⌖</b>
+    </button>
+    <button class="start-mission cut" id="c-go">
+      Gale rover mission <b>→</b>
+    </button>
+
+    <!-- zone picker after "Start mission" -->
+    <section class="zones" id="zones">
+      <div class="z-head">
+        <div class="kicker">Mission briefing · Gale crater · Mount Sharp</div>
+        <h2>Choose a zone to scout</h2>
+        <p>
+          The rover drives first and measures the route. Then you rate it, fix
+          it, and walk it as an astronaut.
+        </p>
+      </div>
+      <div class="z-list" id="z-list"></div>
+      <button class="back cut" id="z-back">← Back to globe</button>
+    </section>
+
+    <div class="boot" id="boot">
+      <div class="boot-box">
+        <div class="boot-title">MARS<em>/</em>MAP</div>
+        <div class="boot-bar"><i id="boot-fill"></i></div>
+      </div>
+    </div>
+
+    <script src="assets/global/hrsc/base.js?v=web12-e46a748024"></script>
+    <script src="assets/global/hrsc/terrain-summary.js?v=web12-f52ba4c001"></script>
+    <script src="js/terrain-tiles.js?v=web12-08dcf47335"></script>
+    <script src="assets/mars_texture.js?v=web12-85eb42187f"></script>
+    <script src="assets/mars_normal.js?v=web12-329ebd24cb"></script>
+    <script src="js/missions.js?v=web12-0c300dd1ab"></script>
+    <script src="js/zones.js?v=web12-a79e18c30b"></script>
+    <script src="js/regions.js?v=web12-94e5e33888"></script>
+    <script src="assets/global/mola.js?v=web12-1492a5662c"></script>
+    <script src="assets/global/storms.js?v=web12-69fa390334"></script>
+    <script src="js/hazards.js?v=web12-e8b4861dbf"></script>
+    <script src="js/hazard-controls.js?v=web12-dd7aa03b8c"></script>
+    <script src="js/weather.js?v=web12-8291b218c6"></script>
+    <script src="assets/valles/site.js?v=web12-4cc8167bfc"></script>
+    <script src="js/global-model.js?v=web12-481fa58c6f"></script>
+    <script src="vendor/three-0.169.0.bundle.js?v=web12-5ba6d36e59"></script>
+    <script src="js/region-selection.js?v=web12-8ebd14b993"></script>
+    <script src="js/region-capture.js?v=web12-c866c228d9"></script>
+    <script src="assets/wikipedia/catalogue.js?v=web12-fe448698c7"></script>
+    <script src="js/region-wikipedia.js?v=web12-11c7acc440"></script>
+    <script src="js/globe.js?v=web12-7677b9ae45"></script>
+    <script src="js/global-planner.js?v=web12-cc47a30349"></script>
+    <script src="js/global-weather.js?v=web12-2ff214d50a"></script>
+    <script src="js/region-risk.js?v=web12-49ee79f914"></script>
+  </body>
+</html>
