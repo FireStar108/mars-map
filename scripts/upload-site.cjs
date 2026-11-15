@@ -41,7 +41,8 @@ async function input(){
  if(batch.length)batches.push(batch);
  let next=0,done=0;
  const start=Date.now();
- await Promise.all(Array.from({length:4},async()=>{
+ const workers=Math.min(8,Math.max(1,Math.floor(Number(process.env.MARS_UPLOAD_CONCURRENCY)||4)));
+ await Promise.all(Array.from({length:workers},async()=>{
   while(next<batches.length){const batch=batches[next++];
    const payload=batch.map(file=>({...file,data:fs.readFileSync(path.join(root,'outputs/site',file.path)).toString('base64')}));
    await call('/__publish/batch',{release:manifest.release,files:payload});
