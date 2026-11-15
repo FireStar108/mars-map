@@ -4,7 +4,8 @@
   "private": true,
   "description": "Interactive Mars atlas and Valles Marineris expedition planner",
   "scripts": {
-    "build": "node scripts/build-site.cjs",
+    "build": "node scripts/build-site.cjs && node scripts/build-host.cjs",
+    "build:web": "node scripts/build-site.cjs",
     "offline": "node scripts/build-offline.cjs",
     "check": "node tests/check-assets.cjs"
   },

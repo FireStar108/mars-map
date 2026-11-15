@@ -16,9 +16,18 @@ tracked WebP assets. The existing development folder already has these files.
 
 ## Publish
 
-`npm run build` prepares `dist/`. It includes the complete relief pyramid,
-Wikipedia imagery and runtime data, while excluding internal logs and tests.
-The source repository is private; the published website is public.
+`npm run build` prepares public files in `outputs/site/` and a small R2-backed
+hosting Worker in `dist/`. The complete relief pyramid, Wikipedia imagery and
+runtime data are uploaded to the Site's file bucket, preserving full image
+dimensions and avoiding the hosting archive size limit. Internal logs and tests
+are excluded. The source repository is private; the published website is public.
+
+`scripts/upload-site.cjs` accepts the Site URL and a temporary upload key through
+hidden stdin. Uploads verify SHA-256 checksums and are permanently sealed once
+all files and bytes are present. The runtime upload secret is removed after
+publication; the public site then only serves files. The key is never stored in
+Git or client code. For a conventional static host, use `npm run build:web` and
+publish `outputs/site/` directly.
 
 The default map uses DEM-derived shaded relief from HRSC/MOLA, approximately
 200 m source spacing. Web textures retain the full tile dimensions. The 3D

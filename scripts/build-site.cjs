@@ -1,5 +1,5 @@
 const fs=require('node:fs'), path=require('node:path');
-const root=path.resolve(__dirname,'..'), dest=path.join(root,'dist');
+const root=path.resolve(__dirname,'..'), dest=path.join(root,'outputs/site');
 fs.mkdirSync(dest,{recursive:true});
 // Only runtime files and publicly attributed data enter the public site.
 for(const entry of fs.readdirSync(root)) {
@@ -20,4 +20,4 @@ for(let z=0;z<=6;z++) {
 }
 fs.writeFileSync(path.join(dest,'.nojekyll'),'');
 fs.writeFileSync(path.join(dest,'_headers'),'/assets/global/hrsc/*\n  Cache-Control: public, max-age=86400\n');
-console.log(`Built static site with ${count} full-dimension relief tiles in dist/`);
+console.log(`Built static site with ${count} full-dimension relief tiles in outputs/site/`);
