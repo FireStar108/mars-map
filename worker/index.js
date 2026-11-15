@@ -3,6 +3,9 @@
 const RELEASE = "__ASSET_RELEASE__";
 const EXPECTED_FILES = __ASSET_COUNT__;
 const EXPECTED_BYTES = __ASSET_BYTES__;
+const BASE_RELEASE = "__BASE_RELEASE__";
+const INLINE_FILES = __INLINE_FILES__;
+const REMOVED_FILES = __REMOVED_FILES__;
 const prefix = RELEASE + "/";
 const json = (body, status=200) => new Response(JSON.stringify(body), {status,headers:{"Content-Type":"application/json","Cache-Control":"no-store"}});
 function validPath(key) {
@@ -17,6 +20,7 @@ function authorized(request, env) {
   return diff===0;
 }
 async function upload(request, env, url) {
+  if(BASE_RELEASE)return new Response("Not found",{status:404});
   if(!authorized(request,env))return new Response("Not found",{status:404});
   if(await env.BUCKET.head(prefix+".sealed"))return json({error:"Release is sealed"},409);
   if(url.pathname==="/__publish/seal" && request.method==="POST") {
@@ -58,18 +62,23 @@ export default {
     if(!env.BUCKET)return json({error:"File storage not bound"},503);
     const url=new URL(request.url);
     if(url.pathname.startsWith("/__publish/"))return upload(request,env,url);
-    if(url.pathname==="/__health")return json({release:RELEASE,sealed:!!await env.BUCKET.head(prefix+".sealed"),files:EXPECTED_FILES});
+    if(url.pathname==="/__health")return json({release:RELEASE,baseRelease:BASE_RELEASE||null,sealed:!!await env.BUCKET.head((BASE_RELEASE||RELEASE)+"/.sealed"),files:EXPECTED_FILES,inlineFiles:Object.keys(INLINE_FILES).length});
     if(!["GET","HEAD"].includes(request.method))return new Response("Method not allowed",{status:405,headers:{Allow:"GET, HEAD"}});
     let key;
     try{key=decodeURIComponent(url.pathname).replace(/^\//,"")||"index.html";}catch{return new Response("Not found",{status:404});}
-    if(!validPath(key))return new Response("Not found",{status:404});
+    if(!validPath(key)||REMOVED_FILES.includes(key))return new Response("Not found",{status:404});
     const cacheKey=new Request(url.origin+"/"+key+"?release="+RELEASE);
     const cacheable=request.method==="GET"&&!key.endsWith(".html");
     // Sites runs in an isolated Workers namespace: the shared default cache is
     // unavailable. A named cache is optional; storage must still work without it.
     let cache;
     if(cacheable){try{cache=await caches.open("mars-assets");const cached=await cache.match(cacheKey);if(cached)return cached;}catch{cache=null;}}
-    const object=await env.BUCKET[request.method==="HEAD"?"head":"get"](prefix+key);
+    const inline=INLINE_FILES[key];
+    const object=inline?{
+      body:request.method==="HEAD"?null:Uint8Array.from(atob(inline.data),c=>c.charCodeAt(0)),
+      size:inline.size,httpEtag:`"${inline.sha256}"`,customMetadata:{sha256:inline.sha256},
+      writeHttpMetadata(headers){headers.set("Content-Type",inline.type);headers.set("Cache-Control",key.endsWith(".html")?"no-cache":"public, max-age=86400");},
+    }:await env.BUCKET[request.method==="HEAD"?"head":"get"]((BASE_RELEASE||RELEASE)+"/"+key);
     if(!object)return new Response("Not found",{status:404,headers:{"Cache-Control":"no-store"}});
     const headers=new Headers();object.writeHttpMetadata(headers);
     headers.set("ETag",object.httpEtag);

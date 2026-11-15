@@ -6,6 +6,7 @@
     <title>Valles Marineris expedition planner · Mars Map</title>
     <link rel="stylesheet" href="css/valles.css?v=web12-112f82819a" />
     <link rel="stylesheet" href="css/hazards.css?v=web12-5ecf91e3f0" />
+    <link rel="stylesheet" href="css/layer-legend.css?v=legend13-dd4989a7b9" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   </head>
   <body>
@@ -250,10 +251,6 @@
           </div>
           <div class="north">N<br />↑</div>
           <div id="map-tooltip" class="map-tooltip" hidden></div>
-          <div class="map-legend" id="map-legend">
-            HiRISE optical mosaic · MRO / NASA / JPL / University of Arizona /
-            USGS
-          </div>
           <div class="map-scale">
             <span id="scale-bar"></span><b id="scale-label">200 m</b>
           </div>
@@ -263,6 +260,7 @@
             ><button id="stop-demo" aria-label="Stop walkthrough">×</button>
           </div>
         </div>
+        <div class="map-legend" id="map-legend" role="region" aria-label="Map colour legend"></div>
         <div class="profile-panel">
           <div class="profile-title">
             <h3>Elevation along your traverse</h3>
@@ -320,11 +318,12 @@
     <script src="vendor/three-0.169.0.bundle.js?v=web12-5ba6d36e59"></script>
     <script src="assets/valles/terrain.js?v=web12-5e260c8674"></script>
     <script src="assets/valles/surface-data.js?v=web12-507841f169"></script>
-    <script src="js/hazards.js?v=web12-e8b4861dbf"></script>
+    <script src="js/hazards.js?v=legend13-6c1d5e0368"></script>
     <script src="js/hazard-controls.js?v=web12-dd7aa03b8c"></script>
     <script src="js/weather.js?v=web12-8291b218c6"></script>
+    <script src="js/layer-legend.js?v=legend13-4fd015f6be"></script>
     <script src="js/valles-model.js?v=web12-e2451f0275"></script>
     <script src="js/valles-3d.js?v=web12-9cd4086c62"></script>
-    <script src="js/valles.js?v=web12-b9a6101642"></script>
+    <script src="js/valles.js?v=legend13-4fb34ed2f7"></script>
   </body>
 </html>

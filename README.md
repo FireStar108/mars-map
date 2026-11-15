@@ -6,7 +6,7 @@ Valles Marineris / Southwest Candor terrain planner.
 
 Public site: https://mars-map-firestar108.candyarena32.chatgpt.site
 
-Private source repository: https://github.com/FireStar108/mars-map
+Public source repository: https://github.com/FireStar108/mars-map
 
 ## Run
 
@@ -24,11 +24,18 @@ tracked WebP assets. The existing development folder already has these files.
 hosting Worker in `dist/`. The complete relief pyramid, Wikipedia imagery and
 runtime data are uploaded to the Site's file bucket, preserving full image
 dimensions and avoiding the hosting archive size limit. Internal logs and tests
-are excluded. The source repository is private; the published website is public.
+are excluded from website serving. Both the source repository and website are public.
+
+Small updates reuse the sealed asset snapshot in `.openai/static-base.json`.
+The build embeds changed files in the Worker (up to 4 MiB total) and reuses
+unchanged images and tiles from R2. Publish the resulting archive directly;
+no upload secret or repeat map upload is needed. HTML, scripts and styles change
+together in one deployment. Larger data changes require publishing a new sealed
+asset base and updating its snapshot.
 
 `scripts/upload-site.cjs` accepts the Site URL and a temporary upload key through
 hidden stdin. Uploads verify SHA-256 checksums and are permanently sealed once
-all files and bytes are present. The runtime upload secret is removed after
+all files and bytes are present when publishing an initial static base. The runtime upload secret is removed after
 publication; the public site then only serves files. The key is never stored in
 Git or client code. For a conventional static host, use `npm run build:web` and
 publish `outputs/site/` directly.

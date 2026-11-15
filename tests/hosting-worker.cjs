@@ -1,6 +1,7 @@
 const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 (async()=>{
- const raw=fs.readFileSync('worker/index.js','utf8').replace('__ASSET_RELEASE__','test-release').replace('__ASSET_COUNT__','1').replace('__ASSET_BYTES__','5');
+ const template=fs.readFileSync('worker/index.js','utf8');
+ const raw=template.replace('__ASSET_RELEASE__','test-release').replace('__ASSET_COUNT__','1').replace('__ASSET_BYTES__','5').replace('__BASE_RELEASE__','').replace('__INLINE_FILES__','{}').replace('__REMOVED_FILES__','[]');
  const worker=(await import('data:text/javascript;base64,'+Buffer.from(raw).toString('base64'))).default;
  const records=new Map(),cache=new Map();
  const object=(key)=>{const r=records.get(key);if(!r)return null;return {...r,key,writeHttpMetadata(headers){for(const [key,value]of Object.entries(r.httpMetadata||{})){headers.set(key==='contentType'?'Content-Type':'Cache-Control',value);}}};};
@@ -31,5 +32,16 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require(
  global.caches.open=async()=>{throw new Error('Cache unavailable');};
  assert.equal(await (await worker.fetch(new Request(base+'/css/test.css'),env,ctx)).text(),'hello');
  console.log('PASS: isolated named cache and storage fallback when caching is unavailable');
+ const update={...file,size:7,data:Buffer.from('updated').toString('base64'),sha256:crypto.createHash('sha256').update('updated').digest('hex')};
+ const revised=template.replace('__ASSET_RELEASE__','next-release').replace('__ASSET_COUNT__','2').replace('__ASSET_BYTES__','12').replace('__BASE_RELEASE__','test-release').replace('__INLINE_FILES__',JSON.stringify({'index.html':update})).replace('__REMOVED_FILES__',JSON.stringify(['assets/deleted.txt']));
+ const next=(await import('data:text/javascript;base64,'+Buffer.from(revised).toString('base64'))).default;
+ assert.equal(await (await next.fetch(new Request(base+'/'),env,ctx)).text(),'updated');
+ const head=await next.fetch(new Request(base+'/',{method:'HEAD'}),env,ctx);assert.equal(head.headers.get('Content-Length'),'7');assert.equal(await head.text(),'');
+ assert.equal((await next.fetch(new Request(base+'/',{headers:{'If-None-Match':head.headers.get('ETag')}}),env,ctx)).status,304);
+ assert.equal(await (await next.fetch(new Request(base+'/css/test.css'),env,ctx)).text(),'hello');
+ assert.equal((await next.fetch(new Request(base+'/assets/deleted.txt'),env,ctx)).status,404);
+ const health=await(await next.fetch(new Request(base+'/__health'),env,ctx)).json();assert.equal(health.sealed,true);assert.equal(health.baseRelease,'test-release');assert.equal(health.inlineFiles,1);
+ assert.equal((await next.fetch(new Request(base+'/__publish/batch',{method:'POST'}),env,ctx)).status,404);
+ console.log('PASS: atomic inline updates, sealed base reuse, HEAD/ETag, removed paths and disabled uploads');
  console.log('PASS: scoped upload authentication, path validation, content checksums, completeness/seal, read-only serving and disabled upload');
 })().catch(e=>{console.error(e);process.exitCode=1});

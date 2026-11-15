@@ -421,8 +421,7 @@
       canvas.width = 360;
       canvas.height = 180;
       const context = canvas.getContext("2d"),
-        image = context.createImageData(360, 180),
-        color = new THREE.Color();
+        image = context.createImageData(360, 180);
       for (let row = 0; row < 180; row++)
         for (let col = 0; col < 360; col++) {
           if (hazardLayer) {
@@ -439,42 +438,16 @@
             continue;
           }
           const sample = engine.sample(89.5 - row, col - 179.5, ls);
-          let alpha = 225;
-          if (layer === "elevation") {
-            const t = Math.max(
-              0,
-              Math.min(1, (sample.elevation + 8000) / 29000),
-            );
-            color.setHSL(0.65 - 0.65 * t, 0.65, 0.35 + t * 0.22);
-          } else if (layer === "scenario") {
-            const t = MarsWeather.globalAt(
+          const value = layer === "elevation" ? sample.elevation
+            : layer === "radiation" ? sample.radiationRelative
+            : layer === "dust" ? sample.dustNormalized
+            : MarsWeather.globalAt(
               state.weather,
               89.5 - row,
               col - 179.5,
             ).dust;
-            color.setHSL(0.14 - 0.14 * t, 0.85, 0.42 + 0.1 * t);
-            alpha = 35 + 210 * t;
-          } else if (layer === "dust") {
-            const t = sample.dustNormalized || 0;
-            color.setHSL(0.12 - 0.12 * t, 0.9, 0.45 + t * 0.1);
-            alpha = t ? 100 + 155 * Math.sqrt(t) : 0;
-          } else {
-            const t = Math.max(
-              0,
-              Math.min(1, (Math.log(sample.radiationRelative) + 0.75) / 2.8),
-            );
-            color.setHSL(0.66 - 0.54 * t, 0.65, 0.38 + t * 0.16);
-          }
           const i = (row * 360 + col) * 4;
-          image.data.set(
-            [
-              Math.round(color.r * 255),
-              Math.round(color.g * 255),
-              Math.round(color.b * 255),
-              alpha,
-            ],
-            i,
-          );
+          image.data.set(MarsLayerLegend.planetColor(layer, value), i);
         }
       context.putImageData(image, 0, 0);
       overlayMaterial.map?.dispose();
@@ -516,16 +489,10 @@
         "Elevation above areoid · blue −8 km → yellow/red +21 km · MOLA 0.5° data · 1° display mesh",
       dust: `${events.length} historical detections · MY26–30 · season Ls ${ls - 45}–${ls + 45}° · heat = counts within 5°. Sparse coverage ≠ low hazard.`,
       radiation:
-        "Relative radiation / shielding proxy · lower terrain offers more atmospheric column · exp(elevation / 10.8 km). Dose uncalibrated.",
+        "Altitude-based comparison · hover over a location to see its relative index.",
     };
-    $("global-legend").textContent = hazardLayer
-      ? `${state.hazards.enabled ? "SIMULATED" : "DISABLED"} · ${MarsHazards.definitions[layer]?.name || "All generated hazards"} · seed ${state.hazards.seed} · indices 0–100, not probability · hatching = CLOSED${layer === "solar" ? " · solar hold applies everywhere" : ""}`
-      : labels[layer];
-    if (hazardLayer)
-      $("global-legend").insertAdjacentHTML(
-        "beforeend",
-        MarsHazards.legendHtml(layer),
-      );
+    MarsLayerLegend.planet($("global-legend"), layer,
+      hazardLayer ? `Scenario seed ${state.hazards.seed}` : labels[layer], state.hazards.enabled);
     globe.markDirty();
   }
   $("planet-layer").onchange = setLayer;

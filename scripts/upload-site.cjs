@@ -1,6 +1,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'outputs/asset-manifest.json'),'utf8'));
+if(manifest.baseRelease)throw new Error('This build reuses a sealed base and includes changes in the Worker; deploy the archive without uploading assets.');
 const checkpoint=path.join(root,'outputs',`uploaded-${manifest.release}.json`);
 let secret='';
 async function input(){

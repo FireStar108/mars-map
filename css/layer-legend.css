@@ -1,0 +1,33 @@
+.layer-legend { margin: 0; color: #edf1e5; font: 11px/1.5 "IBM Plex Mono", monospace; }
+.layer-legend summary { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; padding: 2px 0; }
+.layer-legend summary::-webkit-details-marker { display: none; }
+.layer-legend summary:focus-visible { outline: 2px solid #b2e4c1; outline-offset: 4px; }
+.layer-legend summary strong { font-size: 12px; flex: 1; }
+.legend-badge { font-size: 8px; color: #b5c9b6; text-align: right; }
+.legend-toggle::after { content: "+"; font-size: 17px; }
+.layer-legend[open] .legend-toggle::after { content: "−"; }
+.legend-body { padding-top: 5px; }
+.legend-body p { margin: 5px 0 0; }
+.legend-meaning { color: #f2f2e9; }
+.legend-scale { margin: 8px 0 5px; }
+.legend-direction, .legend-ticks { display: flex; justify-content: space-between; gap: 8px; font-size: 9px; }
+.legend-direction { color: #edf1e5; margin-bottom: 3px; }
+.legend-gradient { height: 12px; border: 1px solid #75816b; border-radius: 2px; }
+.legend-ticks { margin-top: 3px; color: #d0d7c9; }
+.legend-note, .legend-context { font-size: 9px; color: #b9c3b4; }
+.legend-context { border-top: 1px solid #3c493b; padding-top: 6px; }
+.legend-keys { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 6px; }
+.legend-key { display: inline-flex; align-items: center; gap: 5px; font-size: 9px; }
+.legend-key i { display: inline-block; width: 14px; height: 11px; flex: 0 0 14px; border: 1px solid #8b9482; }
+.legend-key i.legend-hatch { background: repeating-linear-gradient(135deg,#fff5e8 0 2px,#503e38 2px 6px); }
+#global-legend { width: min(560px,calc(100vw - 40px)); padding: 10px 12px; max-height: 40vh; overflow: auto; background: #101812f5; }
+#map-legend { position: relative; inset: auto; margin-top: 10px; padding: 12px; border: 1px solid #3b4d3d; pointer-events: auto; background: #101812; z-index: auto; }
+@media (max-width: 700px) {
+  #global-legend { left: 12px; width: calc(100vw - 24px); bottom: 68px; padding: 8px 10px; max-height: 33vh; z-index: 7; }
+  #global-legend .layer-legend { font-size: 10px; }
+  #global-legend .legend-context { display: none; }
+  #global-legend .legend-badge { max-width: 108px; }
+  .region-browser, .global-routing .region-browser { bottom: calc(var(--legend-height, 90px) + 76px); max-height: min(37vh,calc(100svh - var(--legend-height,90px) - 260px)); }
+  body .region-card, body.region-selected .region-card { bottom: calc(var(--legend-height,90px) + 76px); max-height: min(42vh,calc(100svh - var(--legend-height,90px) - 265px)); }
+  #map-name-count { display: none; }
+}

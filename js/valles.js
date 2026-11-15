@@ -68,15 +68,7 @@
   const slopeContext = slopeMap.getContext("2d");
   const pixels = slopeContext.createImageData(data.width, data.height);
   data.slopes.forEach((slope, i) => {
-    const color =
-      slope === null
-        ? [170, 130, 200, 210]
-        : slope > 28
-          ? [224, 70, 54, 210]
-          : slope > 15
-            ? [244, 167, 75, 175]
-            : [105, 164, 117, Math.max(35, slope * 7)];
-    pixels.data.set(color, i * 4);
+    pixels.data.set(MarsLayerLegend.slopeColor(slope), i * 4);
   });
   slopeContext.putImageData(pixels, 0, 0);
 
@@ -388,15 +380,9 @@
         "Proposed observation sites · investigate layering and access · base & science tasks hypothetical",
       conditions: `Scenario across patch · ${weather().temperature} °C · ${weather().wind} m/s · visibility ${distance(weather().visibility)}. Amber = modeled dust and wind exposure; upwind terrain changes local wind.`,
     };
-    $("map-legend").textContent =
-      state.layer === "hazards"
-        ? `${state.hazards.enabled ? "SIMULATED" : "DISABLED"} · ${MarsHazards.definitions[state.hazardLayer]?.name || "All hazards"} · hatching = closed · seed ${state.hazards.seed}`
-        : legends[state.layer];
-    if (state.layer === "hazards")
-      $("map-legend").insertAdjacentHTML(
-        "beforeend",
-        MarsHazards.legendHtml(state.hazardLayer),
-      );
+    MarsLayerLegend.local($("map-legend"), state.layer,
+      state.layer === "hazards" ? `Scenario seed ${state.hazards.seed}` : legends[state.layer],
+      state.hazardLayer, state.hazards.enabled);
   }
   function marker(point, label, color, shape, offset = 0) {
     const p = screen(point);
@@ -745,17 +731,7 @@
     const cx = c.getContext("2d"),
       im = cx.createImageData(data.width, data.height);
     state.field.cells.forEach((w, i) => {
-      im.data.set(
-        w
-          ? [
-              230,
-              112 + Math.round(80 * (1 - w.dust)),
-              45,
-              Math.round(45 + 170 * Math.min(1, w.dust + w.wind / 70)),
-            ]
-          : [130, 80, 180, 160],
-        i * 4,
-      );
+      im.data.set(MarsLayerLegend.conditionsColor(w), i * 4);
     });
     cx.putImageData(im, 0, 0);
     conditionField = state.field;

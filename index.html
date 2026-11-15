@@ -15,6 +15,7 @@
       href="css/region-wikipedia.css?v=web12-e30440d64a"
     />
     <link rel="stylesheet" href="css/region-risk.css?v=web12-f45bbb1dcd" />
+    <link rel="stylesheet" href="css/layer-legend.css?v=legend13-dd4989a7b9" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   </head>
   <body>
@@ -67,7 +68,7 @@
       ><button id="globe-zoom-out" aria-label="Zoom out">−</button
       ><button id="globe-home">Globe</button>
     </div>
-    <div id="global-legend" role="status"></div>
+    <div id="global-legend" role="region" aria-label="Map colour legend"></div>
     <div id="global-probe" hidden></div>
     <div id="map-name-count"></div>
     <button id="toggle-global-panels" aria-pressed="false">Hide panels</button>
@@ -320,18 +321,19 @@
     <script src="js/regions.js?v=web12-94e5e33888"></script>
     <script src="assets/global/mola.js?v=web12-1492a5662c"></script>
     <script src="assets/global/storms.js?v=web12-69fa390334"></script>
-    <script src="js/hazards.js?v=web12-e8b4861dbf"></script>
+    <script src="js/hazards.js?v=legend13-6c1d5e0368"></script>
     <script src="js/hazard-controls.js?v=web12-dd7aa03b8c"></script>
     <script src="js/weather.js?v=web12-8291b218c6"></script>
     <script src="assets/valles/site.js?v=web12-4cc8167bfc"></script>
     <script src="js/global-model.js?v=web12-481fa58c6f"></script>
     <script src="vendor/three-0.169.0.bundle.js?v=web12-5ba6d36e59"></script>
+    <script src="js/layer-legend.js?v=legend13-4fd015f6be"></script>
     <script src="js/region-selection.js?v=web12-8ebd14b993"></script>
     <script src="js/region-capture.js?v=web12-c866c228d9"></script>
     <script src="assets/wikipedia/catalogue.js?v=web12-fe448698c7"></script>
     <script src="js/region-wikipedia.js?v=web12-11c7acc440"></script>
     <script src="js/globe.js?v=web12-7677b9ae45"></script>
-    <script src="js/global-planner.js?v=web12-cc47a30349"></script>
+    <script src="js/global-planner.js?v=legend13-d243e14498"></script>
     <script src="js/global-weather.js?v=web12-2ff214d50a"></script>
     <script src="js/region-risk.js?v=web12-49ee79f914"></script>
   </body>

@@ -361,14 +361,17 @@
         : cell.hazardMask &
           { sand: 1, rocks: 2, rockfall: 4, cold: 8, solar: 16 }[kind];
     if (!field.config.enabled || level < 0.035) return [0, 0, 0, 0];
-    const color = definitions[kind].color;
     // High-contrast hatching identifies a hard closure; color alone is not the key.
     if (
       relevant &&
       ((index % field.width) + Math.floor(index / field.width)) % 6 < 2
     )
       return [255, 245, 232, 235];
-    return [...color, Math.round(30 + level * 185 + (relevant ? 30 : 0))];
+    return tint(kind, level, !!relevant);
+  }
+  function tint(kind, level, closed = false) {
+    return level < 0.035 ? [0, 0, 0, 0]
+      : [...definitions[kind].color, Math.round(30 + level * 185 + (closed ? 30 : 0))];
   }
   function evidenceHtml() {
     return `<h3>Generated hazards · evidence and assumptions</h3><p>These layers are reproducible scenario fields, not remotely detected hazards or probabilities. Sand, rock abundance and slope instability cannot be inferred reliably from the global MOLA grid. Terrain only biases the generated fields; the local layer uses nearby relief as a rough exposure cue, not a rockfall simulation. Global and local patterns are generated at different scales.</p>${Object.entries(
@@ -408,6 +411,7 @@
     reasons,
     description,
     rgba,
+    tint,
     evidenceHtml,
     legendHtml,
   };
