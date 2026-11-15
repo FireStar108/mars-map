@@ -76,7 +76,7 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
       "The high-resolution terrain must actually render, not only report loaded tiles",
     );
     console.log(
-      "PASS: native-resolution HRSC tiles load offline at close zoom, bounded tile/cache budget",
+      "PASS: native-resolution HRSC tiles load at close zoom, bounded tile/cache budget",
     );
     async function dragAt(distance) {
       await page.evaluate(

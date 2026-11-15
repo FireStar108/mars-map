@@ -4,6 +4,10 @@ Interactive 3D Mars atlas with 2,054 named features, HRSC/MOLA shaded relief,
 generated weather and hazard scenarios, long-distance routes and a detailed
 Valles Marineris / Southwest Candor terrain planner.
 
+Public site: https://mars-map-firestar108.candyarena32.chatgpt.site
+
+Private source repository: https://github.com/FireStar108/mars-map
+
 ## Run
 
 No JavaScript dependencies are required. Serve this directory with a static

@@ -65,7 +65,10 @@ export default {
     if(!validPath(key))return new Response("Not found",{status:404});
     const cacheKey=new Request(url.origin+"/"+key+"?release="+RELEASE);
     const cacheable=request.method==="GET"&&!key.endsWith(".html");
-    if(cacheable){const cached=await caches.default.match(cacheKey);if(cached)return cached;}
+    // Sites runs in an isolated Workers namespace: the shared default cache is
+    // unavailable. A named cache is optional; storage must still work without it.
+    let cache;
+    if(cacheable){try{cache=await caches.open("mars-assets");const cached=await cache.match(cacheKey);if(cached)return cached;}catch{cache=null;}}
     const object=await env.BUCKET[request.method==="HEAD"?"head":"get"](prefix+key);
     if(!object)return new Response("Not found",{status:404,headers:{"Cache-Control":"no-store"}});
     const headers=new Headers();object.writeHttpMetadata(headers);
@@ -75,7 +78,7 @@ export default {
     if(request.headers.get("If-None-Match")===object.httpEtag)return new Response(null,{status:304,headers});
     headers.set("Content-Length",String(object.size));
     const response=new Response(request.method==="HEAD"?null:object.body,{headers});
-    if(cacheable)ctx.waitUntil(caches.default.put(cacheKey,response.clone()));
+    if(cache)ctx.waitUntil(cache.put(cacheKey,response.clone()).catch(()=>{}));
     return response;
   }
 };

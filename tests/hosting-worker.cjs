@@ -9,7 +9,8 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require(
   async head(key){return object(key);},async get(key){return object(key);},
   async list(){return {objects:[...records].map(([key,r])=>({key,size:r.size})),truncated:false};},
  }};
- global.caches={default:{async match(req){return cache.get(req.url)?.clone();},async put(req,res){cache.set(req.url,res);}}};
+ const namedCache={async match(req){return cache.get(req.url)?.clone();},async put(req,res){cache.set(req.url,res);}};
+ global.caches={get default(){throw new Error('Default cache is unavailable in isolated Workers');},async open(){return namedCache;}};
  const ctx={waitUntil(p){p.catch(()=>{});}},base='https://example.com';
  const send=(route,body,key=env.MARS_UPLOAD_KEY)=>worker.fetch(new Request(base+route,{method:'POST',headers:{'Content-Type':'application/json','X-Mars-Upload-Key':key},body:JSON.stringify(body)}),env,ctx);
  const file={path:'index.html',sha256:crypto.createHash('sha256').update('hello').digest('hex'),data:Buffer.from('hello').toString('base64'),type:'text/html'};
@@ -25,5 +26,10 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require(
  delete env.MARS_UPLOAD_KEY;
  assert.equal((await send('/__publish/batch',{},'a'.repeat(64))).status,404);
  assert.equal((await worker.fetch(new Request(base+'/__health'),env,ctx)).status,200);
+ records.set('test-release/css/test.css',{...records.get('test-release/index.html'),httpMetadata:{contentType:'text/css'}});
+ const css=await worker.fetch(new Request(base+'/css/test.css'),env,ctx);assert.equal(await css.text(),'hello');assert.equal(css.headers.get('Content-Type'),'text/css');
+ global.caches.open=async()=>{throw new Error('Cache unavailable');};
+ assert.equal(await (await worker.fetch(new Request(base+'/css/test.css'),env,ctx)).text(),'hello');
+ console.log('PASS: isolated named cache and storage fallback when caching is unavailable');
  console.log('PASS: scoped upload authentication, path validation, content checksums, completeness/seal, read-only serving and disabled upload');
 })().catch(e=>{console.error(e);process.exitCode=1});

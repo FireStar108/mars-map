@@ -1,4 +1,4 @@
-// Offline file:// integration test. Requires PUPPETEER_MODULE and a local Chrome.
+// Integration test for file:// or MARS_TEST_URL. Requires PUPPETEER_MODULE and Chrome.
 const puppeteer = require(process.env.PUPPETEER_MODULE || "puppeteer-core"),
   assert = require("node:assert/strict"),
   path = require("node:path"),
@@ -20,12 +20,12 @@ const delay = (ms) => new Promise((r) => setTimeout(r, ms));
     const page = await browser.newPage(),
       errors = [];
     await page.setViewport({ width: 1440, height: 1000 });
-    await page.setOfflineMode(true);
+    await page.setOfflineMode(!process.env.MARS_TEST_URL);
     page.on("pageerror", (e) => errors.push(e.message));
     page.on("console", (m) => {
       if (m.type() === "error") errors.push(m.text().slice(0, 300));
     });
-    const url = pathToFileURL(path.resolve(__dirname, "../index.html")).href;
+    const url = process.env.MARS_TEST_URL || pathToFileURL(path.resolve(__dirname, "../index.html")).href;
     await page.goto(url);
     await page.waitForSelector("body.ready");
     assert.equal(
@@ -217,7 +217,7 @@ const delay = (ms) => new Promise((r) => setTimeout(r, ms));
     );
     assert.deepEqual(errors, []);
     console.log(
-      "PASS offline atlas → spatial global weather/routes → Valles 3D picking, replanning, comparison, holds, fallback, layers, preview, mobile and reload",
+      "PASS atlas → spatial global weather/routes → Valles 3D picking, replanning, comparison, holds, fallback, layers, preview, mobile and reload",
     );
   } finally {
     await browser.close();
