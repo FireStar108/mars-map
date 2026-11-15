@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Jezero expedition planner · Mars Map</title>
+    <link rel="stylesheet" href="css/jezero.css?v=web12-37bda48e49" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"
+        >MARS<span>/</span>MAP <small>EXPEDITION PLANNER</small></a
+      >
+      <nav class="section-nav" aria-label="Project sections">
+        <a href="index.html">Planet · 3D</a
+        ><a href="jezero.html" aria-current="page">Jezero · detailed</a>
+      </nav>
+      <button id="sources-open" class="quiet">Data & model ↗</button>
+    </header>
+    <main class="workspace">
+      <aside class="setup">
+        <div class="section-title">MISSION BRIEF <span>01 / PLAN</span></div>
+        <h1>
+          A walk into<br />
+          an ancient delta.
+        </h1>
+        <p class="intro">
+          Study layered rocks. Choose a traverse. Return with time in reserve.
+        </p>
+        <label class="field-label" for="target">Science destination</label>
+        <select id="target">
+          <option value="ridge">Hogwallow Flats · delta outcrop</option>
+          <option value="near">Delta approach · nearby survey</option>
+        </select>
+        <p id="science-description" class="muted"></p>
+        <div class="control">
+          <label for="limit"
+            >EVA time budget <output id="limit-value"></output></label
+          ><input
+            id="limit"
+            type="range"
+            min="30"
+            max="240"
+            step="5"
+            value="120"
+          />
+        </div>
+        <div class="paired">
+          <label
+            >Science stop
+            <select id="science">
+              <option value="10">10 min</option>
+              <option value="20" selected>20 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+            </select></label
+          ><label
+            >Required reserve
+            <select id="reserve">
+              <option value="10">10 min</option>
+              <option value="20" selected>20 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+            </select></label
+          >
+        </div>
+        <section class="weather">
+          <div class="section-title">
+            WEATHER SCENARIO <span class="scenario-dot">SIMULATED</span>
+          </div>
+          <div class="presets" aria-label="Weather presets">
+            <button data-preset="clear" class="active">Clear</button
+            ><button data-preset="cold">Cold</button
+            ><button data-preset="dust">Dust</button>
+          </div>
+          <div class="control">
+            <label for="temperature"
+              >Air temperature <output id="temperature-value"></output></label
+            ><input
+              id="temperature"
+              type="range"
+              min="-100"
+              max="0"
+              step="1"
+              value="-35"
+            />
+          </div>
+          <div class="control">
+            <label for="wind"
+              >Wind speed <output id="wind-value"></output></label
+            ><input
+              id="wind"
+              type="range"
+              min="0"
+              max="30"
+              step="1"
+              value="5"
+            />
+          </div>
+          <div class="control">
+            <label for="visibility"
+              >Visibility <output id="visibility-value"></output></label
+            ><input
+              id="visibility"
+              type="range"
+              min="50"
+              max="3000"
+              step="50"
+              value="2000"
+            />
+          </div>
+          <button id="random-weather" class="random">⤨ Generate weather</button>
+          <p class="micro" id="scenario-note">
+            Constant conditions for this EVA. Change any value to recalculate.
+          </p>
+        </section>
+        <details class="measurement">
+          <summary>MEDA · measured reference</summary>
+          <div id="meda-reference">Loading archived reference…</div>
+          <button id="use-measured" class="quiet">
+            Use measured temperature
+          </button>
+        </details>
+      </aside>
+      <section class="map-column">
+        <div class="map-heading">
+          <div>
+            <span class="eyebrow">WESTERN DELTA / LOCAL STUDY AREA</span>
+            <h2>Plan your return.</h2>
+          </div>
+          <span class="data-status" id="data-status">Loading terrain…</span>
+        </div>
+        <div class="map-shell" id="map-shell">
+          <canvas
+            id="map"
+            tabindex="0"
+            aria-label="Interactive Jezero map. Drag to pan, scroll or use plus and minus to zoom. Science destinations can also be selected in the mission panel."
+          ></canvas>
+          <div class="layers" aria-label="Map layers">
+            <button data-layer="surface" class="active">Surface</button
+            ><button data-layer="slope">Slope</button
+            ><button data-layer="science">Science</button
+            ><button data-layer="conditions">Conditions</button>
+          </div>
+          <div class="map-tools">
+            <button id="zoom-in" aria-label="Zoom in">+</button
+            ><button id="zoom-out" aria-label="Zoom out">−</button
+            ><button id="fit-map" aria-label="Fit map">⌖</button>
+          </div>
+          <div class="north">N<br />↑</div>
+          <div id="map-tooltip" class="map-tooltip" hidden></div>
+          <div class="map-legend" id="map-legend">
+            HiRISE optical mosaic · MRO / NASA / JPL / University of Arizona /
+            USGS
+          </div>
+          <div class="map-scale">
+            <span id="scale-bar"></span><b id="scale-label">200 m</b>
+          </div>
+          <div id="expedition" class="expedition" hidden>
+            <span id="expedition-stage"></span
+            ><strong id="expedition-progress"></strong
+            ><button id="stop-demo" aria-label="Stop walkthrough">×</button>
+          </div>
+        </div>
+        <div class="profile-panel">
+          <div class="profile-title">
+            <h3>Elevation along your traverse</h3>
+            <span id="profile-subtitle"></span>
+          </div>
+          <canvas
+            id="profile"
+            aria-label="Elevation profile for both outbound routes"
+          ></canvas>
+          <div class="profile-footer">
+            <span
+              ><i class="key direct"></i>Short route
+              <i class="key gentle"></i>Gentle route</span
+            ><span>Same corridor used for the return</span>
+          </div>
+        </div>
+      </section>
+      <aside class="results">
+        <div class="section-title">ROUTE ASSESSMENT <span>LIVE</span></div>
+        <div id="recommendation" role="status" aria-live="polite"></div>
+        <div id="route-cards"></div>
+        <div id="fallback"></div>
+        <div class="timeline">
+          <h3>Round-trip time</h3>
+          <div id="time-bar"></div>
+          <div id="time-breakdown"></div>
+        </div>
+        <button id="start-demo" class="primary">
+          Preview expedition <span>→</span></button
+        ><button id="export-plan" class="quiet export">
+          ↓ Export mission plan
+        </button>
+        <p class="micro limits">
+          Planning prototype. Time and risk are modeled. Surface rocks, soil
+          strength and suit performance require field verification.
+        </p>
+      </aside>
+    </main>
+    <dialog id="sources">
+      <div class="dialog-head">
+        <h2>Evidence & assumptions</h2>
+        <button id="sources-close" aria-label="Close data and model">×</button>
+      </div>
+      <div id="sources-content"></div>
+    </dialog>
+    <script src="assets/jezero/terrain.js?v=web12-b29ca6b5d4"></script>
+    <script src="assets/jezero/reference.js?v=web12-ff2a832133"></script>
+    <script src="js/jezero-model.js?v=web12-54971fdfb3"></script>
+    <script src="js/jezero.js?v=web12-afff1c7045"></script>
+  </body>
+</html>

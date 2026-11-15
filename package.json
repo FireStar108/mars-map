@@ -1,0 +1,12 @@
+{
+  "name": "mars-map",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive Mars atlas and Valles Marineris expedition planner",
+  "scripts": {
+    "build": "node scripts/build-site.cjs",
+    "offline": "node scripts/build-offline.cjs",
+    "check": "node tests/check-assets.cjs"
+  },
+  "engines": { "node": ">=18" }
+}
